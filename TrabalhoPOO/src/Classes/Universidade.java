@@ -7,7 +7,7 @@ package Classes;
 
 /**
  *
- * @author user
+ * @author rodri
  */
 public class Universidade {
     protected Departamento departamentos[];
@@ -64,10 +64,10 @@ public class Universidade {
         return mensagem = "Inserção Mal Sucedida\nNúmero máximo departamentos atingido\n";
     }
     
-    public String removerDepartamento(Departamento departamento){
+    public String removerDepartamento(String codigo, String nome){
         if(contador >= 0){
             for(int i = 0; i < tamanho; i++){
-                if(departamentos[i].getCodigo().equals(departamento.getCodigo()) && departamentos[i].getNome().equals(departamento.getNome())){
+                if(departamentos[i].getCodigo().equals(codigo) && departamentos[i].getNome().equals(nome)){
                     for(int j = i; j < tamanho; j++, i++){
                         departamentos[j] = departamentos[i+1];
                     }
