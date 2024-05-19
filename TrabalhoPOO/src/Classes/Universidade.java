@@ -12,14 +12,16 @@ package Classes;
 public class Universidade {
     protected Departamento departamentos[];
     protected int tamanho, contador = 0;
-    protected String mensagem;
+    protected String nome, mensagem;
 
     public Universidade() {
+        this.nome = "Universidade";
         this.departamentos = new Departamento[Constantes.MAX];
         this.tamanho = Constantes.MAX;
     }
 
-    public Universidade(Departamento[] departamentos, int tamanho) {
+    public Universidade(String nome, int tamanho) {
+        this.nome = nome;
         this.departamentos = new Departamento[tamanho];
         this.tamanho = tamanho;
     }
@@ -34,6 +36,14 @@ public class Universidade {
 
     public int getContador() {
         return contador;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setTamanho(int tamanho) {
