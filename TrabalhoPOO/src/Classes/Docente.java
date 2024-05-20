@@ -16,8 +16,8 @@ public abstract class Docente extends Funcionario {
         super();
     }
     
-    public Docente(String codigo, String nome, double salario, String nivel, String titulacao){
-       super(codigo, nome, salario, nivel);
+    public Docente(String codigo, String nome, String nivel, String titulacao){
+       super(codigo, nome, nivel);
        this.titulacao = titulacao;
     }
 
@@ -28,12 +28,19 @@ public abstract class Docente extends Funcionario {
     public void setTitulacao(String titulacao) {
         this.titulacao = titulacao;
     }
-    
-    public String getNivel(){
-        
+
+    public String getNivel() {
+        return nivel;
     }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
+   
     
-    public abstract double calcularSalario();
+    public double calcularSalario(){
+        return super.calcularSalario();
+    }
 }
 
 

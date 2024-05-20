@@ -15,8 +15,8 @@ public class Substituto extends Docente {
         super();
     }
     
-    public Substituto(String nome, String codigo, double salario, String nivel, String titulacao, String area){
-        super(codigo, nome, salario, nivel, titulacao);
+    public Substituto( String codigo, String nome,String nivel, String titulacao, String area){
+        super(codigo, nome, nivel, titulacao);
         this.cargahoraria = cargahoraria;
     }
 
@@ -29,7 +29,7 @@ public class Substituto extends Docente {
     }
 
     public double calcularSalario(){
-        if(nivel.equal("S1")){
+        if(nivel.equals("S1")){
             salario = Constantes.SALARIOBASE * Constantes.S1;
         }else{
             salario = Constantes.SALARIOBASE * Constantes.S2;

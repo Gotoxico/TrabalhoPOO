@@ -16,8 +16,8 @@ public class Efetivo extends Docente {
         super();
     }
     
-    public Efetivo(String nome, String codigo, double salario, String nivel, String titulacao, String area){
-        super(codigo, nome, salario, nivel, titulacao);
+    public Efetivo(String nome, String codigo, String nivel, String titulacao, String area){
+        super(codigo, nome, nivel, titulacao);
         this.area = area;
     }
 

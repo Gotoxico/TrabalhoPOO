@@ -54,6 +54,8 @@ public abstract class Funcionario {
         this.salario = salario;
     }
     
-    abstract double calcularSalario();
+    public double calcularSalario(){
+        return Constantes.SALARIOBASE;
+    }
     
 }
