@@ -8,15 +8,15 @@ import DataBase.DataBaseFunc;
  */
 import DataBase.DataBase;
 import DataBase.DataBaseFunc;
+import java.util.ArrayList;
 /**
  *
  * @author rodri
  */
-public class Departamento {
+public class Departamento implements Cloneable {
     protected String codigo, nome, mensagem;
     protected int tamanho, contador = 0;
     DataBaseFunc dbf ;
-    String mensagem;
     public Departamento() {
         tamanho = Constantes.MAX;
         dbf = new DataBaseFunc(tamanho);
@@ -61,42 +61,39 @@ public class Departamento {
         dbf.AddFuncionario(a);
     }
     
+  
     
-    public void removerFuncionario(String nome,  String codigo){
-         dbf.removerFuncionario(nome, codigo);
-    }
-    
-    public void FucionariosPorFaixa(double min, double max){
-        dbf.FucionariosPorFaixa(min, max);
+    public ArrayList<Funcionario> FucionariosPorFaixa(double min, double max){
+        return dbf.FucionariosPorFaixa(min, max);
     }
     
         
-    public void ExibirTecnicos(){
-        dbf.ExibirTecnicos();
+    public ArrayList<Funcionario> ExibirTecnicos(){
+        return dbf.ExibirTecnicos();
     }
     
-    public void ExibirDocentes(){
-        dbf.ExibirDocentes();
+    public ArrayList<Funcionario> ExibirDocentes(){
+        return dbf.ExibirDocentes();
     }
     
-    public void BuscarFuncPorNome(String nome){
-        dbf.BuscarFuncPorNome(nome);
+    public Funcionario BuscarFuncPorNome(String nome){
+        return dbf.BuscarFuncPorNome(nome);
     }
     
-    public void BuscarFuncPorCod(String codigo){
-        dbf.BuscarFuncPorCod(codigo);
+    public Funcionario BuscarFuncPorCod(String codigo){
+        return dbf.BuscarFuncPorCod(codigo);
     }
     
-    public void ExibirSubstitutos(){
-        dbf.ExibirSubstitutos();
+    public ArrayList<Funcionario> ExibirSubstitutos(){
+        return dbf.ExibirSubstitutos();
     }
 
-    public void ExibirDocentesEfetivos(){
-        dbf.ExibirDocentesEfetivos();
+    public ArrayList<Funcionario> ExibirDocentesEfetivos(){
+        return dbf.ExibirDocentesEfetivos();
     }    
     
-    public void exibirTodosFuncionarios(){    
-        dbf.exibirTodosFuncionarios();
+    public ArrayList<Funcionario> exibirTodosFuncionarios(){    
+        return dbf.exibirTodosFuncionarios();
     }
     
     public void RemoverFuncionario(String nome, String codigo){
@@ -110,4 +107,22 @@ public class Departamento {
     public Funcionario RetornarFuncionario(int i){
         return dbf.RetornarFuncionario(i);
     }
+    
+    public double GastoTotal(){
+        return dbf.getGastoTotal();
+    }
+    
+    @Override
+    public Departamento clone(){
+        Departamento departamento;
+        try{
+            departamento = (Departamento) super.clone();
+        }
+        catch(CloneNotSupportedException e){
+            System.out.println("Erro\n");
+            return null;
+        }
+        return departamento;
+    }
+    
 }

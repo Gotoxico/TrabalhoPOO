@@ -7,13 +7,15 @@ import DataBase.DataBase;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import DataBase.DataBase;
+import java.util.ArrayList;
+import Classes.Departamento;
 /**
  *
  * @author rodri
  */
 public class Universidade {
     //protected Departamento departamentos[];
-    protected int tamanho, contador = 0;
+    protected int tamanho;
     protected String nome, mensagem;
     DataBase db;
 
@@ -37,8 +39,9 @@ public class Universidade {
     }
 
     public int getContador() {
-        return db.ContDep();
+        return db.getContDep();
     }
+    
 
     public String getNome() {
         return nome;
@@ -50,135 +53,62 @@ public class Universidade {
 
     public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
-        this.departamentos = new Departamento[tamanho];
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
     }
     
-    public String adicionarDepartamento(Departamento departamento){
-        if(contador < tamanho){
-            departamentos[contador] = departamento;
-            contador++;
-            return mensagem = "Inserção Bem Sucedida\n";
-        }
-        return mensagem = "Inserção Mal Sucedida\nNúmero máximo departamentos atingido\n";
+    public void adicionarDepartamento(Departamento departamento){
+        db.AddDepartamento(departamento);
     }
     
-    public String removerDepartamento(String codigo, String nome){
-        if(contador >= 0){
-            for(int i = 0; i < tamanho; i++){
-                if(departamentos[i].getCodigo().equals(codigo) && departamentos[i].getNome().equals(nome)){
-                    for(int j = i; j < tamanho; j++, i++){
-                        departamentos[j] = departamentos[i+1];
-                    }
-                    return mensagem = "Remoção Bem Sucedida\n";
-                }
-            }
-            return mensagem = "Remoção Mal Sucedida\nDepartamento não localizado\n";
-        }
-        return mensagem = "Remoção Mal Sucedida\nNão presença de departamentos\n";
+    public void removerDepartamento(String codigo, String nome){
+        db.removerDepartamento(codigo, nome);
     }
     
-    public void geral(){
-        for(int i = 0; i < tamanho; i++){
-            mensagem = "\nCódigo: " + departamentos[i].getCodigo() + "\tNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                    Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                    mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario()); 
-                }
-      
-                //Implementar para Docente Efetivo e Substituto
-            }
-        }
+    public ArrayList<Departamento> geral(){
+        return db.Geral();
     }
     
-    public void resumoDepartamentoFaixa(double limiteInferior, double limiteSuperior){
-        for(int i = 0; i < tamanho; i++){
-            if(departamentos[i].getGastoTotalDepartamento() >= limiteInferior && departamentos[i].getGastoTotalDepartamento() <= limiteSuperior){
-                mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            }
-        }
+    public ArrayList<Departamento> resumoDepartamentoFaixa(double limiteInferior, double limiteSuperior){
+        return db.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
     }
     
-    public void funcionariosSalarioFaixa(double limiteInferior, double limiteSuperior){
-        for(int i = 0; i < tamanho; i++){
-            mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                    Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                    if(tecnico.calcularSalario() >= limiteInferior && tecnico.calcularSalario() <= limiteSuperior){
-                        mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario());
-                    }
-                }
-                
-                //Implementar para Docente Efetivo e Substituto
-            }
-        }
+    public ArrayList<Funcionario> funcionariosSalarioFaixa(double limiteInferior, double limiteSuperior){
+        return db.FucionariosPorFaixa(limiteInferior, limiteSuperior);
     }
     
-    public void exibirTodosFuncionarios(){
-        for(int i = 0; i < tamanho; i++){
-            mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                    Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                    mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario());
-                }
-                
-                //Implementar para Docente Efetivo e Substituto
-
-            }
-        }
+    public ArrayList<Funcionario> exibirTodosFuncionarios(){
+        return db.exibirTodosFuncionarios();
     }
     
-    public void exibirTodosTecnicos(){
-        for(int i = 0; i < tamanho; i++){
-            mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                    Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                    mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario());
-                }
-            }
-        }
+    public ArrayList<Funcionario> exibirTodosTecnicos(){
+        return db.ExibirTecnicos();
     }
     
-    public void exibirTodosDocentes(){
-        //Implementar
+    public ArrayList<Funcionario> exibirTodosDocentes(){
+        return db.ExibirDocentes();
     }
     
-    public void exibirTodosDocentesEfetivos(){
-        //Implementar
+    
+    public ArrayList<Funcionario> exibirTodosDocentesEfetivos(){
+        return db.ExibirDocentesEfetivos();
     }
     
-    public void exibirTodosDocentesSubstitutos(){
-        //Implementar
+    public ArrayList<Funcionario> exibirTodosDocentesSubstitutos(){
+        return db.ExibirSubstitutos();
     }
     
-    public void exibirInformaçõesDepartamento(String codigo){
-        for(int i = 0; i < tamanho; i++){
-            if(departamentos[i].getCodigo().equals(codigo)){
-                mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-                return;
-            }
-        }
-        mensagem = "Busca Mal Sucedida\nDepartamento inexistente\n";
+    public Departamento exibirInformaçõesDepartamento(Departamento dep){
+        return db.ExibirInformacoesDepartamento(dep);
     }
     
-    public void buscarFuncionarioCodigo(String codigo){
-        db.buscarFuncionarioCod(codigo);
+    public Funcionario buscarFuncionarioCodigo(String codigo){
+        return db.buscarFuncionarioCod(codigo);
     }
     
-    public void buscarFuncionarioNome(String nome){
-        db.buscarFuncionarioNome(nome);
+    public Funcionario buscarFuncionarioNome(String nome){
+        return db.buscarFuncionarioNome(nome);
     }
     
-    public String resumoDepartamentos(){
+    public ArrayList<Departamento> resumoDepartamentos(){
         return db.resumoDepartamentos();
     }
-    
-    pu
 }

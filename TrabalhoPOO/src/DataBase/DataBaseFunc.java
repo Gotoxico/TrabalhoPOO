@@ -10,6 +10,8 @@ import Classes.Constantes;
 import Classes.Docente;
 import Classes.Substituto;
 import Classes.Efetivo;
+import java.util.ArrayList;
+
 /**
  *
  * @author kauan
@@ -56,6 +58,7 @@ public class DataBaseFunc {
     }
 
     public void setFuncionarios(Funcionario[] funcionarios) {
+        
         this.funcionarios = funcionarios;
     }
     
@@ -65,78 +68,103 @@ public class DataBaseFunc {
         }
     }
     
-     public void FucionariosPorFaixa(double min, double max){
+     public ArrayList<Funcionario> FucionariosPorFaixa(double min, double max){
+        ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
         
-        if(min > max) return;
+        if(min > max){
+            double aux = min;
+            min = max;
+            max = aux;
+        }
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i].getSalario() >= min && funcionarios[i].getSalario() <=              max){
-                funcionarios[i].toString();
+            if(funcionarios[i].getSalario() >= min && funcionarios[i].getSalario() <= max){
+                arrayfuncionarios.add(funcionarios[i].clone());
             }
         }
+        return arrayfuncionarios;
     }
     
-    public void ExibirTecnicos(){
+     
+    public ArrayList<Funcionario> ExibirTecnicos(){
         
-    
+        ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
+        
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i].getNivel().equals(Constantes.T1) || funcionarios[i].getNivel().equals(Constantes.T2)){
-                funcionarios[i].toString();
+                arrayfuncionarios.add(funcionarios[i].clone());
             }
         }
+        return arrayfuncionarios;
     }
     
-    public void ExibirDocentes(){
+    public ArrayList<Funcionario> ExibirDocentes(){
+        ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
         
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i] instanceof Docente){
-                funcionarios[i].toString();
+                arrayfuncionarios.add(funcionarios[i].clone());
             }
         }
+        
+        return arrayfuncionarios;
     }
     
-    public void BuscarFuncPorNome(String nome){
+    public Funcionario BuscarFuncPorNome(String nome){
         
-        
+        Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i].getNome().equals(nome)){
-                mensagem = funcionarios[i].toString();
+                funcionario = funcionarios[i];
+                break;
             }
         }
+        return funcionario.clone();
     }
     
-    public void BuscarFuncPorCod(String codigo){
-        
+    public Funcionario BuscarFuncPorCod(String codigo){
+        Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i]. getNome().equals(codigo)){
-                funcionarios[i].toString();
+                funcionario = funcionarios[i];
             }
         }
+        return funcionario.clone();
     }
     
-    public void ExibirSubstitutos(){
+    public ArrayList<Funcionario> ExibirSubstitutos(){
+        
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
         
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i] instanceof Substituto){
-                funcionarios[i].toString();
+                arrayFuncionario.add(funcionarios[i].clone());
             }
         }
+        return arrayFuncionario;
     }
     
-    public void ExibirDocentesEfetivos(){
+    public ArrayList<Funcionario> ExibirDocentesEfetivos(){
 
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i] instanceof Efetivo){
-                funcionarios[i].toString();
+                arrayFuncionario.add(funcionarios[i].clone());
             }
         }
+        return arrayFuncionario;
     }
     
-    public void exibirTodosFuncionarios(){
+    public ArrayList<Funcionario> exibirTodosFuncionarios(){
+        
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
         for(int i = 0; i < contFunc; i++){
-            funcionarios[i].toString();
-            System.out.println("");
+            arrayFuncionario.add(funcionarios[i].clone());
         }
+        return arrayFuncionario;
     }
+    
     
     public void removerFuncionario(String nome, String codigo){
         if(contFunc >= 0){
@@ -150,6 +178,13 @@ public class DataBaseFunc {
         }
     }
     
+    public double getGastoTotal(){
+        double gasto = 0;
+        for(int i = 0; i < contFunc; i++){
+            gasto += funcionarios[i].getSalario();
+        }
+        return gasto;
+    }
 
     /*
     @Override

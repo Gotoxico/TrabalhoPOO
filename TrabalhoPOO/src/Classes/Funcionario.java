@@ -4,15 +4,14 @@ package Classes;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author rodri
  */
-public abstract class Funcionario {
+public abstract class Funcionario implements Cloneable{
     protected String codigo, nome, nivel;
     protected double salario;
-
+    
     public Funcionario() {
     }
 
@@ -54,8 +53,19 @@ public abstract class Funcionario {
         this.salario = salario;
     }
     
-    public double calcularSalario(){
-        return Constantes.SALARIOBASE;
-    }
+    public abstract void calcularSalario();
+    
+    @Override
+    public Funcionario clone(){
+        Funcionario funcionario;
+        try{
+            funcionario = (Funcionario) super.clone();
+        }
+         catch (CloneNotSupportedException e){
+             System.out.println("Erro");  
+             return null;
+         }
+         return funcionario;
+    
     
 }

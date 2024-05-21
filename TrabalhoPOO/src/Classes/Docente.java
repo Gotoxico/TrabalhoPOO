@@ -38,9 +38,7 @@ public abstract class Docente extends Funcionario {
     }
    
     
-    public double calcularSalario(){
-        return super.calcularSalario();
-    }
+    public abstract void calcularSalario();
 }
 
 

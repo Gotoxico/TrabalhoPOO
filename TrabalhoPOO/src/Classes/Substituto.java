@@ -28,13 +28,12 @@ public class Substituto extends Docente {
         this.cargahoraria = cargahoraria;
     }
 
-    public double calcularSalario(){
+    public void calcularSalario(){
         if(nivel.equals("S1")){
             salario = Constantes.SALARIOBASE * Constantes.S1;
         }else{
             salario = Constantes.SALARIOBASE * Constantes.S2;
     }
-        return calcularSalario();
     
     }
     

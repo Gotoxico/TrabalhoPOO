@@ -15,6 +15,8 @@ import Classes.Substituto;
 import Classes.Tecnico;
 import Classes.Constantes;
 import Classes.Departamento;
+import java.util.ArrayList;
+import java.util.Collections;
  
 public class DataBase {
     //private Funcionario funcionarios[];
@@ -50,7 +52,7 @@ public class DataBase {
         }
     }
     public Departamento[] getDepartamentos() {
-        return departamentos;
+        return departamentos.clone();
     }
     
     public int getTamanho() {
@@ -61,43 +63,58 @@ public class DataBase {
         return contDep;
     }
 
-    public void buscarFuncionarioNome(String nome){
+    public Funcionario buscarFuncionarioNome(String nome){
+        Funcionario funcionario = null;
         for(int i = 0; i < contDep; i++){
-           departamentos[i].BuscarFuncPorNome(nome);
-        }
-    }
-
-    public void buscarFuncionarioCod(String codigo){
-        for(int i = 0; i < contDep; i++){
-           departamentos[i].BuscarFuncPorCod(codigo);
+            funcionario = departamentos[i].BuscarFuncPorNome(nome);
         }
         
+        return funcionario;
     }
 
-    public void FucionariosPorFaixa(double min, double max){
+    public Funcionario buscarFuncionarioCod(String codigo){
+        Funcionario funcionario = null;
         for(int i = 0; i < contDep; i++){
-           departamentos[i].FucionariosPorFaixa(min, max);
+          funcionario = departamentos[i].BuscarFuncPorCod(codigo);
         }
+        return funcionario;
     }
 
-    public void exibirTodosFuncionarios(){
+    public ArrayList<Funcionario> FucionariosPorFaixa(double min, double max){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
         for(int i = 0; i < contDep; i++){
-           departamentos[i].exibirTodosFuncionarios();
-;
+           arrayFuncionario.addAll(departamentos[i].FucionariosPorFaixa(min, max));
+        }
+        return arrayFuncionario;
+    }
+
+    
+    public ArrayList<Funcionario> exibirTodosFuncionarios(){        
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
+        for(int i = 0; i < contDep; i++){
+           arrayFuncionario.addAll(departamentos[i].exibirTodosFuncionarios());
         }   
+        return arrayFuncionario;
     }
 
-    public void ExibirDocentesEfetivos(){
+    public ArrayList<Funcionario> ExibirDocentesEfetivos(){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
         
         for(int i = 0; i < contDep; i++){
-           departamentos[i].ExibirDocentesEfetivos();
+           arrayFuncionario.addAll(departamentos[i].ExibirDocentesEfetivos());
         }
+        return arrayFuncionario;
     }    
 
-    public void ExibirSubstitutos(){
+    public ArrayList<Funcionario> ExibirSubstitutos(){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
         for(int i = 0; i < contDep; i++){
-           departamentos[i].ExibirSubstitutos();
+           arrayFuncionario.addAll(departamentos[i].ExibirSubstitutos());
         }
+        return arrayFuncionario;
     }    
     
     public void removerFuncionario(String nome, String codigo){
@@ -106,8 +123,76 @@ public class DataBase {
         }
     }
     
+    public ArrayList<Funcionario> ExibirDocentes(){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        
+        for(int i = 0; i < contDep; i++){
+            arrayFuncionario.addAll(departamentos[i].ExibirDocentes());
+        }
+        return arrayFuncionario;
+    }
     
+    public ArrayList<Funcionario> ExibirTecnicos(){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<>();
+        
+        for(int i = 0; i < contDep; i++){
+           arrayFuncionario.addAll(departamentos[i].ExibirTecnicos());
+        }
+        return arrayFuncionario;
+    }
+    
+    public void removerDepartamento(String codigo, String nome){
+        if(contDep >= 0){
+            for(int i = 0; i < tamanho; i++){
+                if(departamentos[i].getCodigo().equals(codigo) && departamentos[i].getNome().equals(nome)){
+                    for(int j = i; j < tamanho; j++, i++){
+                        departamentos[j] = departamentos[i+1];
+                    }
+                }
+            }
+        }
+    }
+    
+    public ArrayList<Departamento> Geral(){
+        ArrayList<Departamento> arradepartamento = new ArrayList<>();
+        for(int i =  0; i<contDep; i++){
+            arradepartamento.add(departamentos[i].clone());
+        }
+        return arradepartamento;
+    }
+    
+    
+    
+    public ArrayList<Departamento> resumoDepartamentoFaixa(double inferior, double superior){
+        ArrayList<Departamento> arraydepartamento = new ArrayList<>();
 
+        
+        for(int i = 0; i < tamanho; i++){
+            if(departamentos[i].GastoTotal()>= inferior && departamentos[i].GastoTotal()<= superior){
+                arraydepartamento.add(departamentos[i].clone());
+            }
+        }
+        return arraydepartamento;
+    }
+    
+    public Departamento ExibirInformacoesDepartamento(Departamento dep){
+        Departamento departamento = null;   
+        for(int i = 0; i < contDep; i++){
+            if(departamentos[i].getNome().equals(dep.getNome()) && departamentos[i].getCodigo().equals(dep.getCodigo())){
+                departamento = departamentos[i].clone();
+            }
+        }
+        return departamento;
 }
     
+    public ArrayList<Departamento> resumoDepartamentos(){
+        ArrayList<Departamento> arrayDep = new ArrayList<>();
+        
+        for(int i = 0; i < contDep; i++){
+            arrayDep.add(departamentos[i].clone());
+        }
+        return arrayDep;
+    }
+    
+}
 

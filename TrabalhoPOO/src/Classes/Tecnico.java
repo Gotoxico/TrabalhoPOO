@@ -23,15 +23,15 @@ public class Tecnico extends Funcionario{
     public Tecnico(String codigo, String nome, String nivel, String funcao) {
         super(codigo, nome, nivel);
         this.funcao = funcao;
+        calcularSalario();
     }
     
-    public double calcularSalario(){
+    public void calcularSalario(){
         if(nivel.equals("T1")){
             salario = Constantes.SALARIOBASE * Constantes.T1;
-            return salario;
+        }else{
+            salario = Constantes.SALARIOBASE * Constantes.T2;    
         }
-        salario = Constantes.SALARIOBASE * Constantes.T2;
-        return salario;
     }
 
     public String getFuncao() {
