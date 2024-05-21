@@ -69,3 +69,4 @@ public abstract class Funcionario implements Cloneable{
     
     
 }
+}
