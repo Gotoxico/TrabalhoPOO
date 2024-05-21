@@ -14,113 +14,100 @@ import Classes.Efetivo;
 import Classes.Substituto;
 import Classes.Tecnico;
 import Classes.Constantes;
+import Classes.Departamento;
  
 public class DataBase {
-    private static DataBase instance = null;
-    Funcionario funcionario[];
-    int tamanho;
-     int contFunc = 0, contDep = 0;
-     
+    //private Funcionario funcionarios[];
+    private int tamanho;
+    private int contDep = 0;
+    Departamento departamentos[];
+    String mensagem;
+    private double gastoTotalDepartamento = 0;
+
     public DataBase(){
         tamanho = Constantes.MAX;
-        funcionario = new Funcionario[tamanho];
+        departamentos = new Departamento[tamanho];
     }
     
     public DataBase(int tamanho){
         this.tamanho = tamanho;
-        funcionario = new Funcionario[tamanho];
+        departamentos = new Departamento[tamanho];
     }
     
+    //DEPARTAMENTOS
     
-    public static DataBase getInstance(){
-        if(instance == null){
-            instance = new DataBase();
-            return instance;
+    public void AddDepartamento(Departamento dep){
+       if(contDep < tamanho)
+        departamentos[contDep++] = dep;
+    }
+    
+    public void AddFuncionario(String nome, Funcionario a){
+        for(int i = 0; i < contDep; i++){
+            if(departamentos[i].getNome().equals(nome)){
+                departamentos[i].AddFuncionario(a);
+            }
+            
         }
-        return instance;
+    }
+    public Departamento[] getDepartamentos() {
+        return departamentos;
     }
     
-    public void AddFuncionario(Funcionario a){
-        if(contFunc < tamanho){
-            funcionario[contFunc++] = a;
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    public int getContDep() {
+        return contDep;
+    }
+
+    public void buscarFuncionarioNome(String nome){
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].BuscarFuncPorNome(nome);
         }
     }
-    
-    public void exibirTodosFuncionarios(){
-        if(instance == null) return;
+
+    public void buscarFuncionarioCod(String codigo){
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].BuscarFuncPorCod(codigo);
+        }
         
-        for(int i = 0; i < contFunc; i++){
-            funcionario[i].toString();
-            System.out.println("");
-        }
     }
-    
+
     public void FucionariosPorFaixa(double min, double max){
-        if(instance == null) return;
-        if(min > max) return;
-        for(int i = 0; i < contFunc; i++){
-            if(funcionario[i].getSalario() >= min && funcionario[i].getSalario() <=              max){
-                funcionario[i].toString();
-            }
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].FucionariosPorFaixa(min, max);
         }
     }
-    
-    public void ExibirTecnicos(){
-        if(instance == null) return;
-    
-        for(int i = 0; i < contFunc; i++){
-            if(funcionario[i].getNivel().equals(Constantes.T1) || funcionario[i].getNivel().equals(Constantes.T2)){
-                funcionario[i].toString();
-            }
-        }
+
+    public void exibirTodosFuncionarios(){
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].exibirTodosFuncionarios();
+;
+        }   
     }
-    
-    public void ExibirDocentes(){
-        if(instance == null)return;
-        
-        for(int i = 0; i < contFunc; i++){
-            
-        }
-    }
-    
-    public void BuscarFuncPorNome(String nome){
-        if(instance == null) return;
-        
-        for(int i = 0; i < contFunc; i++){
-            if(funcionario[i].getNome().equals(nome)){
-                funcionario[i].toString();
-            }
-        }
-    }
-    
-    public void BuscarFuncPorCod(String codigo){
-        if(instance == null)return;
-        
-        for(int i = 0; i < contFunc; i++){
-            if(funcionario[i]. getNome().equals(codigo)){
-                funcionario[i].toString();
-            }
-        }
-    }
-    
-    public void ExibirSubstitutos(){
-        if(instance == null) return;
-        
-        for(int i = 0; i < contFunc; i++){
-            if(funcionario[i].getNivel().equals(Constantes.S1) || funcionario[i].getNivel().equals(Constantes.S2)){
-                funcionario[i].toString();
-            }
-        }
-    }
-    
+
     public void ExibirDocentesEfetivos(){
-        if(instance == null) return;
-        for(int i = 0; i < contFunc; i++){
-            
+        
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].ExibirDocentesEfetivos();
+        }
+    }    
+
+    public void ExibirSubstitutos(){
+        for(int i = 0; i < contDep; i++){
+           departamentos[i].ExibirSubstitutos();
+        }
+    }    
+    
+    public void removerFuncionario(String nome, String codigo){
+        for(int i = 0; i < contDep; i++){
+            departamentos[i].RemoverFuncionario(nome, codigo);
         }
     }
-            
-            
     
     
+
 }
+    
+

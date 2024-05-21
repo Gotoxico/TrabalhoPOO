@@ -1,33 +1,35 @@
 package Classes;
 
+import DataBase.DataBase;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+import DataBase.DataBase;
 /**
  *
  * @author rodri
  */
 public class Universidade {
-    protected Departamento departamentos[];
+    //protected Departamento departamentos[];
     protected int tamanho, contador = 0;
     protected String nome, mensagem;
+    DataBase db;
 
     public Universidade() {
         this.nome = "Universidade";
-        this.departamentos = new Departamento[Constantes.MAX];
         this.tamanho = Constantes.MAX;
     }
 
     public Universidade(String nome, int tamanho) {
         this.nome = nome;
-        this.departamentos = new Departamento[tamanho];
         this.tamanho = tamanho;
+        db = new DataBase(tamanho);
     }
 
     public Departamento[] getDepartamentos() {
-        return departamentos;
+        return db.getDepartamentos();
     }
 
     public int getTamanho() {
@@ -35,7 +37,7 @@ public class Universidade {
     }
 
     public int getContador() {
-        return contador;
+        return db.ContDep();
     }
 
     public String getNome() {
@@ -88,19 +90,6 @@ public class Universidade {
                     mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario()); 
                 }
       
-                //Implementar para Docente Efetivo e Substituto
-            }
-        }
-    }
-    
-    public void resumoDepartamentos(){
-        for(int i = 0; i < tamanho; i++){
-            mensagem = "\nNome: " + departamentos[i].getNome() + "\tTamanho: " + departamentos[i].getTamanho() + "\tGasto Total Departamento: " + departamentos[i].getGastoTotalDepartamento();
-            for(int j = 0; j < tamanho; j++){
-                if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                    Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j]; 
-                }
-                
                 //Implementar para Docente Efetivo e Substituto
             }
         }
@@ -180,42 +169,16 @@ public class Universidade {
     }
     
     public void buscarFuncionarioCodigo(String codigo){
-        for(int i = 0; i < tamanho; i++){
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j].getCodigo().equals(codigo)){
-                    if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                        Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                        mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario());
-                        return;
-                    }
-                    
-                    //Implementar Docente Efetivo e Substituto
-                }
-            }
-        }
-        mensagem = "Busca Mal Sucedida\nFuncionário inexistente\n";
+        db.buscarFuncionarioCod(codigo);
     }
     
     public void buscarFuncionarioNome(String nome){
-        for(int i = 0; i < tamanho; i++){
-            for(int j = 0; j < departamentos[i].getTamanho(); j++){
-                if(departamentos[i].funcionarios[j].getCodigo().equals(nome)){
-                    if(departamentos[i].funcionarios[j] instanceof Tecnico){
-                        Tecnico tecnico = (Tecnico) departamentos[i].funcionarios[j];
-                        mensagem = "\nCódigo: " + tecnico.getCodigo() + "\tNome: " + tecnico.getNome() + "\tNível: " + tecnico.getNivel() + "\tFunção: " + tecnico.getFuncao() + "\tSalário: " + String.valueOf(tecnico.calcularSalario());
-                        return;
-                    }
-                    
-                    //Implementar Docente Efetivo e Substituto
-                }
-            }
-        }
-        mensagem = "Busca Mal Sucedida\nFuncionário inexistente\n";
+        db.buscarFuncionarioNome(nome);
     }
     
+    public String resumoDepartamentos(){
+        return db.resumoDepartamentos();
+    }
     
-    
-    
-    
-    
+    pu
 }
