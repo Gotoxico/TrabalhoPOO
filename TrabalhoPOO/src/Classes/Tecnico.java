@@ -15,6 +15,7 @@ import Classes.Constantes;
  */
 public class Tecnico extends Funcionario{
     protected String funcao;
+    
 
     public Tecnico() {
     }
