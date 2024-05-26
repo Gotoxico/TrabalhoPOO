@@ -4,7 +4,10 @@
  */
 package Interface;
 
+import Classes.Departamento;
+import Classes.Funcionario;
 import Controlador.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,19 +34,14 @@ public class UIBuscarFuncionarioNome extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        BuscarFuncionarioNomeTextArea = new javax.swing.JTextArea();
         BuscarFuncionarioNomeImprimir = new javax.swing.JButton();
         NomeFuncionario = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaFuncionario = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Funcionário pelo Nome");
-
-        BuscarFuncionarioNomeTextArea.setEditable(false);
-        BuscarFuncionarioNomeTextArea.setColumns(20);
-        BuscarFuncionarioNomeTextArea.setRows(5);
-        jScrollPane3.setViewportView(BuscarFuncionarioNomeTextArea);
 
         BuscarFuncionarioNomeImprimir.setText("Imprimir");
         BuscarFuncionarioNomeImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -59,23 +57,51 @@ public class UIBuscarFuncionarioNome extends javax.swing.JDialog {
             }
         });
 
+        TabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Código", "Salário", "Nível"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TabelaFuncionario);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(NomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BuscarFuncionarioNomeImprimir)))
                 .addGap(38, 38, 38))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,11 +109,11 @@ public class UIBuscarFuncionarioNome extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BuscarFuncionarioNomeImprimir))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -109,8 +135,10 @@ public class UIBuscarFuncionarioNome extends javax.swing.JDialog {
         // TODO add your handling code here:
         String nome = NomeFuncionario.getText();
         Controlador controlador = new Controlador();
-        String texto = controlador.buscarFuncionarioNome(nome);
-        BuscarFuncionarioNomeTextArea.setText(texto);
+        Funcionario funcionario = controlador.buscarFuncionarioNome(nome);
+        
+        Object[] rowData = {funcionario.getCodigo(), funcionario.getSalario(), funcionario.getNivel()};
+        tableModel.addRow(rowData);
     }//GEN-LAST:event_BuscarFuncionarioNomeImprimirActionPerformed
 
     private void NomeFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeFuncionarioActionPerformed
@@ -161,10 +189,24 @@ public class UIBuscarFuncionarioNome extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuscarFuncionarioNomeImprimir;
-    private javax.swing.JTextArea BuscarFuncionarioNomeTextArea;
     private javax.swing.JTextField NomeFuncionario;
+    private javax.swing.JTable TabelaFuncionario;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

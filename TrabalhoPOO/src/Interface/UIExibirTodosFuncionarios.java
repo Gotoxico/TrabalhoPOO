@@ -4,7 +4,9 @@
  */
 package Interface;
 
+import Classes.Funcionario;
 import Controlador.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,52 +33,77 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ExibirTodosFuncionariosTextArea = new javax.swing.JTextArea();
-        ExibirTodosFuncionariosImprimir = new javax.swing.JButton();
+        ExibirFuncionarios = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaTecnico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Funcionários");
 
-        ExibirTodosFuncionariosTextArea.setEditable(false);
-        ExibirTodosFuncionariosTextArea.setColumns(20);
-        ExibirTodosFuncionariosTextArea.setRows(5);
-        jScrollPane3.setViewportView(ExibirTodosFuncionariosTextArea);
-
-        ExibirTodosFuncionariosImprimir.setText("Imprimir");
-        ExibirTodosFuncionariosImprimir.addActionListener(new java.awt.event.ActionListener() {
+        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExibirTodosFuncionariosImprimirActionPerformed(evt);
+                ExibirFuncionariosActionPerformed(evt);
             }
         });
+
+        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Código", "Nome", "Salário", "Nível"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TabelaTecnico);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ExibirTodosFuncionariosImprimir)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(135, 135, 135))))
+                        .addGap(135, 135, 135))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(166, 166, 166))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ExibirFuncionarios)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ExibirTodosFuncionariosImprimir)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,12 +120,18 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExibirTodosFuncionariosImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirTodosFuncionariosImprimirActionPerformed
+    private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
         Controlador controlador = new Controlador();
-        String texto = controlador.exibirTodosFuncionarios();
-        ExibirTodosFuncionariosTextArea.setText(texto);
-    }//GEN-LAST:event_ExibirTodosFuncionariosImprimirActionPerformed
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionarios();
+
+        tableModel.setRowCount(0);
+
+        for (Funcionario funcionario : funcionarios) {
+            Object[] rowData = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getSalario(), funcionario.getNivel()};
+            tableModel.addRow(rowData);
+        }
+    }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,20 +176,24 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExibirTodosFuncionariosImprimir;
-    private javax.swing.JTextArea ExibirTodosFuncionariosTextArea;
-    private javax.swing.JTextArea GeralTextArea;
-    private javax.swing.JTextArea GeralTextArea1;
-    private javax.swing.JButton ImprimirGeral;
-    private javax.swing.JButton ImprimirGeral1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton ExibirFuncionarios;
+    private javax.swing.JTable TabelaTecnico;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

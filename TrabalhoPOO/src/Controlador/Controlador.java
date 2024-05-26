@@ -49,6 +49,10 @@ public class Controlador {
         universidade.removerDepartamento(codigo, nome);
     }
     
+    public void adicionarFuncionario(String nome, String codigo, Funcionario funcionario){
+        universidade.adicionarFuncionario(nome, codigo, funcionario);
+    }
+    
     public ArrayList<Departamento> geral(){
         return universidade.geral();
     }
@@ -85,7 +89,7 @@ public class Controlador {
         return universidade.exibirTodosDocentesSubstitutos();
     }
     
-    public Departamento exibirInformaçõesDepreartamento(Departamento dep){
+    public Departamento exibirInformaçõesDepartamento(Departamento dep){
         return universidade.exibirInformaçõesDepartamento(dep);
     }
     
@@ -97,4 +101,7 @@ public class Controlador {
         return universidade.buscarFuncionarioNome(nome);
     }
     
+    public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
+        return universidade.exibirTodosFuncionariosDepartamento(nome, codigo);
+    }
 }

@@ -4,7 +4,11 @@
  */
 package Interface;
 
+import Classes.Departamento;
+import Classes.Substituto;
 import Controlador.Controlador;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,6 +44,13 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         TitulacaoDocenteSubstituto = new javax.swing.JComboBox<>();
         SalvarDocenteSubstituto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelaDepartamentos = new javax.swing.JTable();
+        ExibirDepartamentos = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaDocentesSubstitutos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,40 +84,128 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
         jLabel4.setText("Adicionar Docente Substituto");
 
+        TabelaDepartamentos.setAutoCreateRowSorter(true);
+        TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Código", "Nome", "Tamanho Atual", "Tamanho Máximo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TabelaDepartamentos.setToolTipText("");
+        TabelaDepartamentos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TabelaDepartamentos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TabelaDepartamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaDepartamentosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TabelaDepartamentos);
+
+        jScrollPane3.setViewportView(jScrollPane2);
+
+        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExibirDepartamentosActionPerformed(evt);
+            }
+        });
+
+        TabelaDocentesSubstitutos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Código", "Nome", "Nível", "Titulação", "Carga-Horária"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TabelaDocentesSubstitutos.setToolTipText("");
+        jScrollPane1.setViewportView(TabelaDocentesSubstitutos);
+
+        jScrollPane4.setViewportView(jScrollPane1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(CodigoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomeDocenteSubstituto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(NivelDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(TitulacaoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CargaHorariaDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel2))
-                    .addComponent(SalvarDocenteSubstituto))
-                .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(129, 129, 129))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SalvarDocenteSubstituto)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(NivelDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(TitulacaoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(81, 81, 81)
+                                    .addComponent(CargaHorariaDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3)
+                                    .addGap(137, 137, 137)
+                                    .addComponent(jLabel2))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                                .addComponent(CodigoDocenteSubstituto)
+                                .addComponent(NomeDocenteSubstituto)))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ExibirDepartamentos)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(CodigoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(NomeDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,6 +221,8 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
                     .addComponent(TitulacaoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(SalvarDocenteSubstituto)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,13 +230,11 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -147,15 +246,41 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
     private void SalvarDocenteSubstitutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarDocenteSubstitutoActionPerformed
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        
         String codigoDocenteSubstituto = CodigoDocenteSubstituto.getText();
         String nomeDocenteSubstituto = NomeDocenteSubstituto.getText();
         String nivelDocenteSubstituto = (String) NivelDocenteSubstituto.getSelectedItem();
         String titulacao = (String) TitulacaoDocenteSubstituto.getSelectedItem();
         String cargaHoraria = (String) CargaHorariaDocenteSubstituto.getSelectedItem();
+        
+        String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
+        
+        Substituto substituto = new Substituto(codigoDocenteSubstituto, nomeDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHoraria);
         Controlador controlador = new Controlador();
-        //controlador.metodo adicionar docente substituto em tal departamento
+        controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, substituto);
+
         this.dispose();
     }//GEN-LAST:event_SalvarDocenteSubstitutoActionPerformed
+
+    private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabelaDepartamentosMouseClicked
+
+    private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
+        // TODO add your handling code here:
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+
+        tableModel.setRowCount(0);
+
+        for (Departamento departamento : departamentos) {
+            Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
+            tableModel.addRow(rowData);
+        }
+    }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,14 +327,35 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CargaHorariaDocenteSubstituto;
     private javax.swing.JTextField CodigoDocenteSubstituto;
+    private javax.swing.JButton ExibirDepartamentos;
     private javax.swing.JComboBox<String> NivelDocenteSubstituto;
     private javax.swing.JTextField NomeDocenteSubstituto;
     private javax.swing.JButton SalvarDocenteSubstituto;
+    private javax.swing.JTable TabelaDepartamentos;
+    private javax.swing.JTable TabelaDocentesSubstitutos;
     private javax.swing.JComboBox<String> TitulacaoDocenteSubstituto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

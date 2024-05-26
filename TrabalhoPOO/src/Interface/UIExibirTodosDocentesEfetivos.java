@@ -4,7 +4,11 @@
  */
 package Interface;
 
+import Classes.Docente;
+import Classes.Efetivo;
+import Classes.Funcionario;
 import Controlador.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,40 +35,66 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ExibirTodosDocentesEfetivosTextArea = new javax.swing.JTextArea();
-        ExibirTodosDocentesEfetivosImprimir = new javax.swing.JButton();
+        ExibirFuncionarios = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaTecnico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Docentes Efetivos");
 
-        ExibirTodosDocentesEfetivosTextArea.setEditable(false);
-        ExibirTodosDocentesEfetivosTextArea.setColumns(20);
-        ExibirTodosDocentesEfetivosTextArea.setRows(5);
-        jScrollPane3.setViewportView(ExibirTodosDocentesEfetivosTextArea);
-
-        ExibirTodosDocentesEfetivosImprimir.setText("Imprimir");
-        ExibirTodosDocentesEfetivosImprimir.addActionListener(new java.awt.event.ActionListener() {
+        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExibirTodosDocentesEfetivosImprimirActionPerformed(evt);
+                ExibirFuncionariosActionPerformed(evt);
             }
         });
+
+        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Código", "Nome", "Salário", "Nível", "Titulação", "Área"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TabelaTecnico);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ExibirTodosDocentesEfetivosImprimir)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel3)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,10 +102,10 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ExibirFuncionarios)
                 .addGap(18, 18, 18)
-                .addComponent(ExibirTodosDocentesEfetivosImprimir)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,18 +116,25 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExibirTodosDocentesEfetivosImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirTodosDocentesEfetivosImprimirActionPerformed
+    private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
         Controlador controlador = new Controlador();
-        String texto = controlador.exibirTodosDocentesEfetivos();
-        ExibirTodosDocentesEfetivosTextArea.setText(texto);
-    }//GEN-LAST:event_ExibirTodosDocentesEfetivosImprimirActionPerformed
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
+
+        tableModel.setRowCount(0);
+
+        for (Funcionario funcionario : funcionarios) {
+            Efetivo efetivo = (Efetivo) funcionario;
+            Object[] rowData = {efetivo.getCodigo(), efetivo.getNome(), efetivo.getSalario(), efetivo.getNivel(), efetivo.getTitulacao(), efetivo.getArea()};
+            tableModel.addRow(rowData);
+        }
+    }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,10 +179,24 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExibirTodosDocentesEfetivosImprimir;
-    private javax.swing.JTextArea ExibirTodosDocentesEfetivosTextArea;
+    private javax.swing.JButton ExibirFuncionarios;
+    private javax.swing.JTable TabelaTecnico;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

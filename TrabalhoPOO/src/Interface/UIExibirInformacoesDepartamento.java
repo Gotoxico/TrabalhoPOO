@@ -4,7 +4,10 @@
  */
 package Interface;
 
+import Classes.Departamento;
 import Controlador.Controlador;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,26 +34,50 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ExibirInformacoesDepartamentoTextArea = new javax.swing.JTextArea();
-        ExibirInformacoesDepartamentoImprimir = new javax.swing.JButton();
+        ExibirDepartamentos = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelaDepartamentos = new javax.swing.JTable();
         CodigoDepartamento = new javax.swing.JTextField();
+        NomeDepartamento = new javax.swing.JTextField();
+        TamanhoAtual = new javax.swing.JTextField();
+        TamanhoMaximo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Informações de um Departamento");
 
-        ExibirInformacoesDepartamentoTextArea.setEditable(false);
-        ExibirInformacoesDepartamentoTextArea.setColumns(20);
-        ExibirInformacoesDepartamentoTextArea.setRows(5);
-        jScrollPane3.setViewportView(ExibirInformacoesDepartamentoTextArea);
-
-        ExibirInformacoesDepartamentoImprimir.setText("Imprimir");
-        ExibirInformacoesDepartamentoImprimir.addActionListener(new java.awt.event.ActionListener() {
+        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExibirInformacoesDepartamentoImprimirActionPerformed(evt);
+                ExibirDepartamentosActionPerformed(evt);
             }
         });
+
+        TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Departamento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TabelaDepartamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaDepartamentosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TabelaDepartamentos);
 
         CodigoDepartamento.setText("Código");
         CodigoDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -59,36 +86,67 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
             }
         });
 
+        NomeDepartamento.setText("Nome");
+        NomeDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomeDepartamentoActionPerformed(evt);
+            }
+        });
+
+        TamanhoAtual.setText("Quantidade Funcionários");
+        TamanhoAtual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TamanhoAtualActionPerformed(evt);
+            }
+        });
+
+        TamanhoMaximo.setText("Tamanho");
+        TamanhoMaximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TamanhoMaximoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ExibirInformacoesDepartamentoImprimir)))
-                .addGap(38, 38, 38))
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(CodigoDepartamento)
+                            .addComponent(NomeDepartamento)
+                            .addComponent(TamanhoAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                            .addComponent(TamanhoMaximo))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ExibirDepartamentos)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ExibirInformacoesDepartamentoImprimir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(NomeDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TamanhoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TamanhoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,17 +163,86 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExibirInformacoesDepartamentoImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirInformacoesDepartamentoImprimirActionPerformed
+    private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
-        String codigo = CodigoDepartamento.getText();
         Controlador controlador = new Controlador();
-        String texto = controlador.exibirInformaçõesDepartamento(codigo);
-        ExibirInformacoesDepartamentoTextArea.setText(texto);
-    }//GEN-LAST:event_ExibirInformacoesDepartamentoImprimirActionPerformed
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+
+        tableModel.setRowCount(0);
+
+        for (Departamento departamento : departamentos) {
+            Object[] rowData = {departamento};
+            tableModel.addRow(rowData);
+        }
+    }//GEN-LAST:event_ExibirDepartamentosActionPerformed
+
+    private void NomeDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeDepartamentoActionPerformed
+        // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        Departamento departamentoSelecionado = (Departamento) modelo.getValueAt(row, 0);
+        
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+        
+        for(Departamento departamento : departamentos){
+            if(departamento.equals(departamentoSelecionado)){
+                NomeDepartamento.setText(departamento.getNome());
+            }
+        }
+    }//GEN-LAST:event_NomeDepartamentoActionPerformed
+
+    private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
     private void CodigoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoDepartamentoActionPerformed
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        Departamento departamentoSelecionado = (Departamento) modelo.getValueAt(row, 0);
+        
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+        
+        for(Departamento departamento : departamentos){
+            if(departamento.equals(departamentoSelecionado)){
+                CodigoDepartamento.setText(departamento.getCodigo());
+            }
+        }
     }//GEN-LAST:event_CodigoDepartamentoActionPerformed
+
+    private void TamanhoAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamanhoAtualActionPerformed
+        // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        Departamento departamentoSelecionado = (Departamento) modelo.getValueAt(row, 0);
+        
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+        
+        for(Departamento departamento : departamentos){
+            if(departamento.equals(departamentoSelecionado)){
+                TamanhoAtual.setText(Double.toString(departamento.getContFunc()));
+            }
+        }
+    }//GEN-LAST:event_TamanhoAtualActionPerformed
+
+    private void TamanhoMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamanhoMaximoActionPerformed
+        // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        Departamento departamentoSelecionado = (Departamento) modelo.getValueAt(row, 0);
+        
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+        
+        for(Departamento departamento : departamentos){
+            if(departamento.equals(departamentoSelecionado)){
+                TamanhoMaximo.setText(Double.toString(departamento.getTamanho()));
+            }
+        }
+    }//GEN-LAST:event_TamanhoMaximoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,10 +288,27 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoDepartamento;
-    private javax.swing.JButton ExibirInformacoesDepartamentoImprimir;
-    private javax.swing.JTextArea ExibirInformacoesDepartamentoTextArea;
+    private javax.swing.JButton ExibirDepartamentos;
+    private javax.swing.JTextField NomeDepartamento;
+    private javax.swing.JTable TabelaDepartamentos;
+    private javax.swing.JTextField TamanhoAtual;
+    private javax.swing.JTextField TamanhoMaximo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

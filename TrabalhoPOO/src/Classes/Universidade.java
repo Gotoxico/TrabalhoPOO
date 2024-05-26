@@ -63,6 +63,10 @@ public class Universidade {
         db.removerDepartamento(codigo, nome);
     }
     
+    public void adicionarFuncionario(String nome, String codigo, Funcionario funcionario){
+        db.AddFuncionario(nome, codigo, funcionario);
+    }
+    
     public ArrayList<Departamento> geral(){
         return db.Geral();
     }
@@ -111,4 +115,9 @@ public class Universidade {
     public ArrayList<Departamento> resumoDepartamentos(){
         return db.resumoDepartamentos();
     }
+    
+    public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
+        return db.exibirTodosFuncionariosDepartamento(nome, codigo);
+    }
+            
 }

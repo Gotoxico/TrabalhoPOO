@@ -4,7 +4,9 @@
  */
 package Interface;
 
+import Classes.Departamento;
 import Controlador.Controlador;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,22 +34,45 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ResumoDepartamentosTextArea = new javax.swing.JTextArea();
-        ImprimirResumoDepartamentos = new javax.swing.JButton();
+        TabelaDepartamentos = new javax.swing.JTable();
+        ExibirDepartamentos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Resumo dos Departamentos");
 
-        ResumoDepartamentosTextArea.setEditable(false);
-        ResumoDepartamentosTextArea.setColumns(20);
-        ResumoDepartamentosTextArea.setRows(5);
-        jScrollPane1.setViewportView(ResumoDepartamentosTextArea);
+        TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Tamanho", "Gasto Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        ImprimirResumoDepartamentos.setText("Imprimir");
-        ImprimirResumoDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TabelaDepartamentos);
+
+        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImprimirResumoDepartamentosActionPerformed(evt);
+                ExibirDepartamentosActionPerformed(evt);
             }
         });
 
@@ -56,15 +81,16 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ImprimirResumoDepartamentos)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(158, 158, 158)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(26, 26, 26)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(jLabel1)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -72,11 +98,11 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ExibirDepartamentos)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ImprimirResumoDepartamentos)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,18 +113,24 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ImprimirResumoDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirResumoDepartamentosActionPerformed
+    private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
         Controlador controlador = new Controlador();
-        String texto = controlador.resumoDepartamentos();
-        ResumoDepartamentosTextArea.setText(texto);
-    }//GEN-LAST:event_ImprimirResumoDepartamentosActionPerformed
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+
+        tableModel.setRowCount(0);
+
+        for (Departamento departamento : departamentos) {
+            Object[] rowData = {departamento.getNome(), departamento.getTamanho(), departamento.GastoTotal()};
+            tableModel.addRow(rowData);
+        }
+    }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +175,24 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ImprimirResumoDepartamentos;
-    private javax.swing.JTextArea ResumoDepartamentosTextArea;
+    private javax.swing.JButton ExibirDepartamentos;
+    private javax.swing.JTable TabelaDepartamentos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private static class tableModel {
+
+        private static void setRowCount(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void addRow(Object[] rowData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tableModel() {
+        }
+    }
 }

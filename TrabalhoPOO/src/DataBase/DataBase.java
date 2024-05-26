@@ -17,6 +17,7 @@ import Classes.Constantes;
 import Classes.Departamento;
 import java.util.ArrayList;
 import java.util.Collections;
+import DataBase.DataBaseFunc;
  
 public class DataBase {
     //private Funcionario funcionarios[];
@@ -43,14 +44,14 @@ public class DataBase {
         departamentos[contDep++] = dep;
     }
     
-    public void AddFuncionario(String nome, Funcionario a){
+    public void AddFuncionario(String nome, String codigo, Funcionario a){
         for(int i = 0; i < contDep; i++){
-            if(departamentos[i].getNome().equals(nome)){
+            if(departamentos[i].getNome().equals(nome) && departamentos[i].getCodigo().equals(codigo)){
                 departamentos[i].AddFuncionario(a);
             }
-            
         }
     }
+    
     public Departamento[] getDepartamentos() {
         return departamentos.clone();
     }
@@ -96,6 +97,18 @@ public class DataBase {
         for(int i = 0; i < contDep; i++){
            arrayFuncionario.addAll(departamentos[i].exibirTodosFuncionarios());
         }   
+        return arrayFuncionario;
+    }
+    
+    public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
+        ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
+        DataBaseFunc dbf = new DataBaseFunc();
+
+        for(int i = 0; i < contDep; i++){
+            if(departamentos[i].getNome().equals(nome) && departamentos[i].getCodigo().equals(codigo)){
+                arrayFuncionario.addAll(departamentos[i].exibirTodosFuncionarios());
+            }
+        }
         return arrayFuncionario;
     }
 
