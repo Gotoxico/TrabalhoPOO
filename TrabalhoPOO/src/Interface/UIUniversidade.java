@@ -111,8 +111,10 @@ public class UIUniversidade extends javax.swing.JDialog {
         // TODO add your handling code here:
         String nomeUniversidade = NomeUniversidade.getText();
         String tamanhoUniversidade = TamanhoUniversidade.getText();
-        Controlador controlador = new Controlador();
+        int tamanho = Integer.parseInt(tamanhoUniversidade);
+        Controlador controlador = new Controlador(nomeUniversidade, tamanho);
         //controlador.metodomudarnomeuniversidade
+        this.dispose();
     }//GEN-LAST:event_SalvarUniversidadeActionPerformed
 
     /**
@@ -145,6 +147,7 @@ public class UIUniversidade extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 UIUniversidade dialog = new UIUniversidade(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override

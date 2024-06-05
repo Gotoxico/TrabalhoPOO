@@ -13,14 +13,22 @@ import Classes.Funcionario;
  * @author rodri
  */
 public class Controlador {
-    protected Universidade universidade;
+    private static Universidade universidade = null;
     
-    public void AdicionarUniversidade(String nome, int tamanho){
-        universidade = new Universidade(nome, tamanho);
+    
+     
+    public Controlador(){
+        
     }
+    
 
-    public Controlador() {
+    public Controlador(String nome, int tamanho) {
+        if(universidade == null){
+            universidade = new Universidade(nome, tamanho);
+        }
     }
+    
+    
 
     public Universidade getUniversidade() {
         return universidade;
