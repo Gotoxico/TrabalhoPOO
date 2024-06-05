@@ -88,10 +88,7 @@ public class UITecnico extends javax.swing.JDialog {
         TabelaDepartamentos.setAutoCreateRowSorter(true);
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Tamanho Atual", "Tamanho Máximo"
@@ -239,35 +236,40 @@ public class UITecnico extends javax.swing.JDialog {
 
     private void SalvarTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarTecnicoActionPerformed
         // TODO add your handling code here:
-        int row = TabelaDepartamentos.getSelectedRow();
-        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        //int row = TabelaDepartamentos.getSelectedRow();
+        //DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         
         String codigoTecnico = CodigoTecnico.getText();
         String nomeTecnico = NomeTecnico.getText();
         String nivelTecnico = (String) NivelTecnico.getSelectedItem();
         String funcao = (String) FuncaoTecnico.getSelectedItem();
         
-        String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
-        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
+        //String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+        //String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
         Tecnico tecnico = new Tecnico(codigoTecnico, nomeTecnico, nivelTecnico, funcao);
         Controlador controlador = new Controlador();
-        controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, tecnico);
+        controlador.adicionarFuncionario("nome", "123", tecnico);
         
         this.dispose();
     }//GEN-LAST:event_SalvarTecnicoActionPerformed
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
         
-        tableModel.setRowCount(0);
+       // tableModel.setRowCount(0);
+       
+        /*for (int i = 0; i < TabelaDepartamentos.getRowCount(); i++) {
+            modelo.removeRow(0);
+        }*/
 
         
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
