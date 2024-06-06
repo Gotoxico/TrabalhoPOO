@@ -174,7 +174,16 @@ public class DataBase {
         return arradepartamento;
     }
     
-    
+    public double gastoTotal(String Codigo, String Nome)
+    {
+        double Gasto = 0;
+        for(int i = 0; i < contDep; i++){
+            if(departamentos[i].getNome().equals(Nome) && departamentos[i].getCodigo().equals(Codigo)){
+                Gasto = departamentos[i].GastoTotal();
+            }
+        }
+        return Gasto;
+    }
     
     public ArrayList<Departamento> resumoDepartamentoFaixa(double inferior, double superior){
         ArrayList<Departamento> arraydepartamento = new ArrayList<>();
@@ -206,6 +215,8 @@ public class DataBase {
         }
         return arrayDep;
     }
+    
+    
     
 }
 

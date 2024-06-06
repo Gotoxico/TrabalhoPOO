@@ -202,8 +202,8 @@ public class UIGeral extends javax.swing.JDialog {
             modelo2.addRow(rowData);
         }
         
-        GastoFuncionarios.setText();
-
+        GastoFuncionarios.setText(Double.toString(controlador.GastoTotal(codigoDepartamento, nomeDepartamento)));
+        
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
     private void jScrollPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane3MouseClicked

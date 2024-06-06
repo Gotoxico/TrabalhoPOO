@@ -112,4 +112,8 @@ public class Controlador {
     public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
         return universidade.exibirTodosFuncionariosDepartamento(nome, codigo);
     }
+    
+    public double GastoTotal(String Codigo, String Nome){
+        return universidade.GastoTotal(Codigo, Nome);
+    }
 }

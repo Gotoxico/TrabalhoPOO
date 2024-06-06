@@ -119,5 +119,8 @@ public class Universidade {
     public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
         return db.exibirTodosFuncionariosDepartamento(nome, codigo);
     }
+    public double  GastoTotal(String Codigo, String Nome){
+        return db.gastoTotal(Codigo, Nome);
+    }
             
 }
