@@ -51,12 +51,11 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaDocentesEfetivos = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        CodigoDocenteEfetivo.setText("Codigo");
-
-        NomeDocenteEfetivo.setText("Nome");
         NomeDocenteEfetivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NomeDocenteEfetivoActionPerformed(evt);
@@ -84,7 +83,7 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
 
         jLabel4.setText("Adicionar Docente Efetivo");
 
-        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.setText("Exibir Departamentos");
         ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentosActionPerformed(evt);
@@ -94,10 +93,7 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         TabelaDepartamentos.setAutoCreateRowSorter(true);
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Tamanho Atual", "Tamanho Máximo"
@@ -161,18 +157,14 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
 
         jScrollPane4.setViewportView(jScrollPane1);
 
+        jLabel5.setText("Código");
+
+        jLabel6.setText("Nome");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,15 +178,27 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                        .addComponent(CodigoDocenteEfetivo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(NomeDocenteEfetivo, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(NivelDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(77, 77, 77)
                             .addComponent(TitulacaoDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AreaDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(AreaDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CodigoDocenteEfetivo)
+                                .addComponent(NomeDocenteEfetivo)))))
                 .addGap(39, 39, 39))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ExibirDepartamentos)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +210,13 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CodigoDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(NomeDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NomeDocenteEfetivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -258,7 +266,7 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
-        Efetivo efetivo = new Efetivo(codigoDocenteEfetivo, nomeDocenteEfetivo, nivelDocenteEfetivo, titulacao, area);
+        Efetivo efetivo = new Efetivo(nomeDocenteEfetivo, codigoDocenteEfetivo, nivelDocenteEfetivo, titulacao, area);
         Controlador controlador = new Controlador();
         controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, efetivo);
         
@@ -267,14 +275,13 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-
-        tableModel.setRowCount(0);
-
+        
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
@@ -339,6 +346,8 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

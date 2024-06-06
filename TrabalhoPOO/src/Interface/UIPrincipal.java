@@ -4,6 +4,9 @@
  */
 package Interface;
 import Controlador.Controlador;
+import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -16,6 +19,15 @@ public class UIPrincipal extends javax.swing.JFrame {
      */
     public UIPrincipal() {
         initComponents();
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                Controlador controlador = new Controlador();
+                if (controlador == null || controlador.getUniversidade() == null) {
+                   Controlador c = new Controlador("UNESP", 50);
+                }
+            }
+        });
     }
 
     /**
@@ -29,7 +41,6 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        CriarUniversidade = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -54,14 +65,6 @@ public class UIPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu2.setText("Menu");
-
-        CriarUniversidade.setText("Criar Universidade");
-        CriarUniversidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CriarUniversidadeActionPerformed(evt);
-            }
-        });
-        jMenu2.add(CriarUniversidade);
 
         jMenuItem2.setText("Criar Departamento");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -337,13 +340,6 @@ public class UIPrincipal extends javax.swing.JFrame {
         UIImprimir.setVisible(true);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
-    private void CriarUniversidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarUniversidadeActionPerformed
-        // TODO add your handling code here:
-        UIUniversidade UIImprimir = new UIUniversidade(this, true);
-        UIImprimir.setLocationRelativeTo(this);
-        UIImprimir.setVisible(true);
-    }//GEN-LAST:event_CriarUniversidadeActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -380,7 +376,6 @@ public class UIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem CriarUniversidade;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

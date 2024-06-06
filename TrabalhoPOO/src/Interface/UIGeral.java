@@ -41,12 +41,13 @@ public class UIGeral extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaFuncionarios = new javax.swing.JTable();
         GastoFuncionarios = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Geral");
 
-        ExibirDepartamentos1.setText("Exibir");
+        ExibirDepartamentos1.setText("Exibir Departamentos");
         ExibirDepartamentos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentos1ActionPerformed(evt);
@@ -62,10 +63,7 @@ public class UIGeral extends javax.swing.JDialog {
         TabelaDepartamentos.setAutoCreateRowSorter(true);
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Tamanho Atual", "Tamanho Máximo"
@@ -98,13 +96,10 @@ public class UIGeral extends javax.swing.JDialog {
 
         TabelaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
-                "Funcionário"
+                "Nome Funcionário"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -117,28 +112,31 @@ public class UIGeral extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(TabelaFuncionarios);
 
-        GastoFuncionarios.setText("Gasto Funcionários");
+        jLabel2.setText("Gasto Funcionários");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(GastoFuncionarios)))
+                .addGap(14, 14, 14))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel1))
+                        .addGap(163, 163, 163)
+                        .addComponent(ExibirDepartamentos1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(ExibirDepartamentos1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(221, 221, 221)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(GastoFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +150,9 @@ public class UIGeral extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(GastoFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GastoFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -160,9 +160,10 @@ public class UIGeral extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,14 +175,13 @@ public class UIGeral extends javax.swing.JDialog {
 
     private void ExibirDepartamentos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentos1ActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-
-        tableModel.setRowCount(0);
-
+        
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentos1ActionPerformed
 
@@ -192,16 +192,17 @@ public class UIGeral extends javax.swing.JDialog {
 
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
-
+        
+        DefaultTableModel modelo2 = (DefaultTableModel)TabelaFuncionarios.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
 
-        tableModel.setRowCount(0);
-
         for(Funcionario funcionario : funcionarios) {
-            Object[] rowData = {funcionario};
-            tableModel.addRow(rowData);
+            Object[] rowData = {funcionario.getNome()};
+            modelo2.addRow(rowData);
         }
+        
+        GastoFuncionarios.setText();
 
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
@@ -257,6 +258,7 @@ public class UIGeral extends javax.swing.JDialog {
     private javax.swing.JTable TabelaDepartamentos;
     private javax.swing.JTable TabelaFuncionarios;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

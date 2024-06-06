@@ -9,6 +9,7 @@ import Classes.Efetivo;
 import Classes.Funcionario;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,25 +38,22 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ExibirFuncionarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaTecnico = new javax.swing.JTable();
+        TabelaDocenteEfetivo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Docentes Efetivos");
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Docentes Efetivos");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
             }
         });
 
-        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaDocenteEfetivo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível", "Titulação", "Área"
@@ -76,25 +74,25 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TabelaTecnico);
+        jScrollPane1.setViewportView(TabelaDocenteEfetivo);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(120, 120, 120)
+                        .addComponent(ExibirFuncionarios)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,15 +122,14 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
 
     private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDocenteEfetivo.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
-
-        tableModel.setRowCount(0);
 
         for (Funcionario funcionario : funcionarios) {
             Efetivo efetivo = (Efetivo) funcionario;
             Object[] rowData = {efetivo.getCodigo(), efetivo.getNome(), efetivo.getSalario(), efetivo.getNivel(), efetivo.getTitulacao(), efetivo.getArea()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
@@ -180,7 +177,7 @@ public class UIExibirTodosDocentesEfetivos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExibirFuncionarios;
-    private javax.swing.JTable TabelaTecnico;
+    private javax.swing.JTable TabelaDocenteEfetivo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

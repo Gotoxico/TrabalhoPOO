@@ -9,6 +9,7 @@ import Classes.Funcionario;
 import Classes.Substituto;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,25 +38,22 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ExibirFuncionarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaTecnico = new javax.swing.JTable();
+        TabelaDocenteSubstituto = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Docentes Substitutos");
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Docentes Substitutos");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
             }
         });
 
-        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaDocenteSubstituto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível", "Titulação", "Carga-horária"
@@ -76,7 +74,7 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TabelaTecnico);
+        jScrollPane1.setViewportView(TabelaDocenteSubstituto);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -89,11 +87,11 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
                         .addComponent(jLabel3)
                         .addGap(115, 115, 115))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(ExibirFuncionarios)
+                        .addGap(107, 107, 107))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,6 +121,7 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
 
     private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDocenteSubstituto.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
 
@@ -131,7 +130,7 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
         for (Funcionario funcionario : funcionarios) {
             Substituto substituto = (Substituto) funcionario;
             Object[] rowData = {substituto.getCodigo(), substituto.getNome(), substituto.getSalario(), substituto.getNivel(), substituto.getTitulacao(), substituto.getCargahoraria()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
@@ -179,7 +178,7 @@ public class UIExibirTodosDocentesSubstitutos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExibirFuncionarios;
-    private javax.swing.JTable TabelaTecnico;
+    private javax.swing.JTable TabelaDocenteSubstituto;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

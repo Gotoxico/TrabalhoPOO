@@ -41,14 +41,6 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                          <Component id="ExibirDepartamentos" min="-2" pref="65" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jScrollPane4" min="-2" pref="476" max="-2" attributes="0"/>
@@ -69,9 +61,25 @@
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane3" alignment="0" pref="470" max="32767" attributes="0"/>
-                                  <Component id="CodigoDocenteSubstituto" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="NomeDocenteSubstituto" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="CodigoDocenteSubstituto" max="32767" attributes="0"/>
+                                          <Component id="NomeDocenteSubstituto" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ExibirDepartamentos" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -89,9 +97,15 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="CodigoDocenteSubstituto" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="CodigoDocenteSubstituto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="NomeDocenteSubstituto" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="NomeDocenteSubstituto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -115,14 +129,8 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="CodigoDocenteSubstituto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="NomeDocenteSubstituto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomeDocenteSubstitutoActionPerformed"/>
           </Events>
@@ -135,10 +143,9 @@
         <Component class="javax.swing.JComboBox" name="NivelDocenteSubstituto">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="D1"/>
-                <StringItem index="1" value="D2"/>
-                <StringItem index="2" value="D3"/>
+              <StringArray count="2">
+                <StringItem index="0" value="S1"/>
+                <StringItem index="1" value="S2"/>
               </StringArray>
             </Property>
           </Properties>
@@ -212,7 +219,7 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
                         <Column editable="false" title="Nome" type="java.lang.String"/>
                         <Column editable="false" title="Tamanho Atual" type="java.lang.Integer"/>
@@ -235,7 +242,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="ExibirDepartamentos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exibir"/>
+            <Property name="text" type="java.lang.String" value="Exibir Departamentos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExibirDepartamentosActionPerformed"/>
@@ -270,6 +277,16 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nome"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

@@ -7,6 +7,7 @@ package Interface;
 import Classes.Departamento;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,10 +44,7 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
 
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Tamanho", "Gasto Total"
@@ -69,7 +67,7 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(TabelaDepartamentos);
 
-        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.setText("Exibir Departamentos");
         ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentosActionPerformed(evt);
@@ -86,11 +84,10 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jLabel1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ExibirDepartamentos)
+                            .addComponent(jLabel1))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,14 +118,13 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
 
-        tableModel.setRowCount(0);
-
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getNome(), departamento.getTamanho(), departamento.GastoTotal()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 

@@ -8,6 +8,7 @@ import Classes.Departamento;
 import Classes.Funcionario;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,25 +36,20 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         LimiteInferior = new javax.swing.JTextField();
-        LimiteSuperior = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaTecnico = new javax.swing.JTable();
+        TabelaFuncionarios = new javax.swing.JTable();
         ExibirFuncionarios = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        LimiteSuperior = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Resumo Funcionários com Salário em Faixa");
 
-        LimiteInferior.setText("Limite Inferior");
-
-        LimiteSuperior.setText("Limite Superior");
-
-        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível"
@@ -74,38 +70,45 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TabelaTecnico);
+        jScrollPane1.setViewportView(TabelaFuncionarios);
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Funcionários");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
             }
         });
 
+        jLabel2.setText("Limite Inferior");
+
+        jLabel3.setText("Limite Superior");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(34, 34, 34))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(178, 178, 178))
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(ExibirFuncionarios))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jLabel1)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +118,8 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
                     .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ExibirFuncionarios)
@@ -127,9 +132,7 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,14 +147,13 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
         double limiteInferior = Double.parseDouble(LimiteInferior.getText());
         double limiteSuperior = Double.parseDouble(LimiteSuperior.getText());
 
+        DefaultTableModel modelo = (DefaultTableModel)TabelaFuncionarios.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.funcionariosSalarioFaixa(limiteInferior, limiteSuperior);
 
-        tableModel.setRowCount(0);
-
         for (Funcionario funcionario : funcionarios) {
             Object[] rowData = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getSalario(), funcionario.getNivel()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
@@ -201,8 +203,10 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
     private javax.swing.JButton ExibirFuncionarios;
     private javax.swing.JTextField LimiteInferior;
     private javax.swing.JTextField LimiteSuperior;
-    private javax.swing.JTable TabelaTecnico;
+    private javax.swing.JTable TabelaFuncionarios;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

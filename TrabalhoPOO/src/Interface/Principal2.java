@@ -5,6 +5,7 @@
 package Interface;
 
 import Classes.Departamento;
+import Classes.Tecnico;
 import Controlador.Controlador;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +25,7 @@ public class Principal2 {
         Departamento departamento = new Departamento("123", "Matematica", 50);
         
         controlador.adicionarDepartamento(departamento);
+  
         
         
         

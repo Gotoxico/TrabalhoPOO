@@ -7,6 +7,7 @@ package Interface;
 import Classes.Departamento;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,16 +39,14 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
         ExibirDepartamentos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaDepartamentos = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Resumo Departamentos com Gasto em Faixa");
 
-        LimiteInferior.setText("Limite Inferior");
-
-        LimiteSuperior.setText("Limite Superior");
-
-        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.setText("Exibir Departamentos");
         ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentosActionPerformed(evt);
@@ -56,10 +55,7 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
 
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Tamanho", "Gasto Total"
@@ -82,30 +78,37 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(TabelaDepartamentos);
 
+        jLabel2.setText("Limite Inferior");
+
+        jLabel3.setText("Limite Superior");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(jLabel1))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(80, 80, 80)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))))
+                        .addGap(215, 215, 215)
+                        .addComponent(ExibirDepartamentos)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,12 +118,14 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LimiteInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LimiteSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(ExibirDepartamentos)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,14 +147,13 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
         double limiteInferior = Double.parseDouble(LimiteInferior.getText());
         double limiteSuperior = Double.parseDouble(LimiteSuperior.getText());
         
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
 
-        tableModel.setRowCount(0);
-
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getNome(), departamento.getTamanho(), departamento.GastoTotal()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
@@ -201,6 +205,8 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
     private javax.swing.JTextField LimiteSuperior;
     private javax.swing.JTable TabelaDepartamentos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

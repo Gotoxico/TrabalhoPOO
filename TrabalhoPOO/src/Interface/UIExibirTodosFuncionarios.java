@@ -7,6 +7,7 @@ package Interface;
 import Classes.Funcionario;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,25 +36,22 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ExibirFuncionarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaTecnico = new javax.swing.JTable();
+        TabelaFuncionarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Funcionários");
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Funcionários");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
             }
         });
 
-        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível"
@@ -74,25 +72,25 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TabelaTecnico);
+        jScrollPane1.setViewportView(TabelaFuncionarios);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(147, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166))))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(ExibirFuncionarios)
+                        .addGap(127, 127, 127))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,14 +120,13 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
 
     private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaFuncionarios.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionarios();
 
-        tableModel.setRowCount(0);
-
         for (Funcionario funcionario : funcionarios) {
             Object[] rowData = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getSalario(), funcionario.getNivel()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
@@ -177,7 +174,7 @@ public class UIExibirTodosFuncionarios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExibirFuncionarios;
-    private javax.swing.JTable TabelaTecnico;
+    private javax.swing.JTable TabelaFuncionarios;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

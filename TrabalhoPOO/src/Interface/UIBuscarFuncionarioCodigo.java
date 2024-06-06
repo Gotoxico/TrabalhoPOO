@@ -6,6 +6,7 @@ package Interface;
 
 import Classes.Funcionario;
 import Controlador.Controlador;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,19 +37,19 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         CodigoFuncionario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaFuncionario = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Funcionário pelo Código");
 
-        BuscarFuncionarioCodigoImprimir.setText("Imprimir");
+        BuscarFuncionarioCodigoImprimir.setText("Exibir Funcionário");
         BuscarFuncionarioCodigoImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarFuncionarioCodigoImprimirActionPerformed(evt);
             }
         });
 
-        CodigoFuncionario.setText("Código");
         CodigoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CodigoFuncionarioActionPerformed(evt);
@@ -57,10 +58,7 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
 
         TabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Código", "Salário", "Nível"
@@ -83,20 +81,30 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(TabelaFuncionario);
 
+        jLabel1.setText("Código");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(CodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(BuscarFuncionarioCodigoImprimir))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(CodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(BuscarFuncionarioCodigoImprimir)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -104,13 +112,15 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CodigoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuscarFuncionarioCodigoImprimir))
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addComponent(BuscarFuncionarioCodigoImprimir)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,7 +131,9 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,11 +142,12 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
     private void BuscarFuncionarioCodigoImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarFuncionarioCodigoImprimirActionPerformed
         // TODO add your handling code here:
         String codigo = CodigoFuncionario.getText();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaFuncionario.getModel();
         Controlador controlador = new Controlador();
         Funcionario funcionario = controlador.buscarFuncionarioCodigo(codigo);
         
         Object[] rowData = {funcionario.getCodigo(), funcionario.getSalario(), funcionario.getNivel()};
-        tableModel.addRow(rowData);
+        modelo.addRow(rowData);
     }//GEN-LAST:event_BuscarFuncionarioCodigoImprimirActionPerformed
 
     private void CodigoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoFuncionarioActionPerformed
@@ -187,6 +200,7 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
     private javax.swing.JButton BuscarFuncionarioCodigoImprimir;
     private javax.swing.JTextField CodigoFuncionario;
     private javax.swing.JTable TabelaFuncionario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

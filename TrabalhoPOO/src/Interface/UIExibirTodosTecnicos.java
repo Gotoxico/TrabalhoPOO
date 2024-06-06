@@ -8,6 +8,7 @@ import Classes.Funcionario;
 import Classes.Tecnico;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,7 +43,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
 
         jLabel3.setText("Todos os Técnicos");
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Técnicos");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
@@ -51,10 +52,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
 
         TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível", "Função"
@@ -88,11 +86,11 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(ExibirFuncionarios)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -123,15 +121,14 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
 
     private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaTecnico.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
-
-        tableModel.setRowCount(0);
 
         for (Funcionario funcionario : funcionarios) {
             Tecnico tecnico = (Tecnico) funcionario;
             Object[] rowData = {tecnico.getCodigo(), tecnico.getNome(), tecnico.getSalario(), tecnico.getNivel(), tecnico.getFuncao()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 

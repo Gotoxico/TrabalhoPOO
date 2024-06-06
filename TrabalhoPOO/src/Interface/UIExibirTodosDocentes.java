@@ -8,6 +8,7 @@ import Classes.Docente;
 import Classes.Funcionario;
 import Controlador.Controlador;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,25 +37,22 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         ExibirFuncionarios = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaTecnico = new javax.swing.JTable();
+        TabelaDocente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Todos os Docentes");
 
-        ExibirFuncionarios.setText("Exibir");
+        ExibirFuncionarios.setText("Exibir Docentes");
         ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirFuncionariosActionPerformed(evt);
             }
         });
 
-        TabelaTecnico.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaDocente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Salário", "Nível", "Titulação"
@@ -75,7 +73,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TabelaTecnico);
+        jScrollPane1.setViewportView(TabelaDocente);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -87,11 +85,11 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
                         .addGap(150, 150, 150)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(ExibirFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(ExibirFuncionarios)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -122,6 +120,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
 
     private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDocente.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
 
@@ -130,7 +129,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
         for (Funcionario funcionario : funcionarios) {
             Docente docente = (Docente) funcionario;
             Object[] rowData = {docente.getCodigo(), docente.getNome(), docente.getSalario(), docente.getNivel(), docente.getTitulacao()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirFuncionariosActionPerformed
 
@@ -178,7 +177,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExibirFuncionarios;
-    private javax.swing.JTable TabelaTecnico;
+    private javax.swing.JTable TabelaDocente;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;

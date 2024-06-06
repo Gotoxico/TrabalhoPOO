@@ -38,15 +38,17 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaDepartamentos = new javax.swing.JTable();
         CodigoDepartamento = new javax.swing.JTextField();
-        NomeDepartamento = new javax.swing.JTextField();
         TamanhoAtual = new javax.swing.JTextField();
         TamanhoMaximo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Informações de um Departamento");
 
-        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.setText("Exibir Departamentos");
         ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentosActionPerformed(evt);
@@ -55,13 +57,10 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
 
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
-                "Departamento"
+                "Nome Departamento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -79,33 +78,32 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(TabelaDepartamentos);
 
-        CodigoDepartamento.setText("Código");
+        CodigoDepartamento.setEditable(false);
         CodigoDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CodigoDepartamentoActionPerformed(evt);
             }
         });
 
-        NomeDepartamento.setText("Nome");
-        NomeDepartamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomeDepartamentoActionPerformed(evt);
-            }
-        });
-
-        TamanhoAtual.setText("Quantidade Funcionários");
+        TamanhoAtual.setEditable(false);
         TamanhoAtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TamanhoAtualActionPerformed(evt);
             }
         });
 
-        TamanhoMaximo.setText("Tamanho");
+        TamanhoMaximo.setEditable(false);
         TamanhoMaximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TamanhoMaximoActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Código");
+
+        jLabel4.setText("Quantidade Funcionários");
+
+        jLabel5.setText("Tamanho");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -115,19 +113,33 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(72, 72, 72)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(CodigoDepartamento)
-                            .addComponent(NomeDepartamento)
-                            .addComponent(TamanhoAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                            .addComponent(TamanhoMaximo))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TamanhoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TamanhoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ExibirDepartamentos)
+                .addGap(191, 191, 191))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,14 +151,18 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(NomeDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TamanhoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(TamanhoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(TamanhoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(TamanhoMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,32 +181,15 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-
-        tableModel.setRowCount(0);
 
         for (Departamento departamento : departamentos) {
-            Object[] rowData = {departamento};
-            tableModel.addRow(rowData);
+            Object[] rowData = {departamento.getNome()};
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
-
-    private void NomeDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeDepartamentoActionPerformed
-        // TODO add your handling code here:
-        int row = TabelaDepartamentos.getSelectedRow();
-        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
-        Departamento departamentoSelecionado = (Departamento) modelo.getValueAt(row, 0);
-        
-        Controlador controlador = new Controlador();
-        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-        
-        for(Departamento departamento : departamentos){
-            if(departamento.equals(departamentoSelecionado)){
-                NomeDepartamento.setText(departamento.getNome());
-            }
-        }
-    }//GEN-LAST:event_NomeDepartamentoActionPerformed
 
     private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
         // TODO add your handling code here:
@@ -289,11 +288,13 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoDepartamento;
     private javax.swing.JButton ExibirDepartamentos;
-    private javax.swing.JTextField NomeDepartamento;
     private javax.swing.JTable TabelaDepartamentos;
     private javax.swing.JTextField TamanhoAtual;
     private javax.swing.JTextField TamanhoMaximo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

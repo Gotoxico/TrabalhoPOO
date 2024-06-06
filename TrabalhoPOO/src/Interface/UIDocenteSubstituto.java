@@ -51,12 +51,11 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaDocentesSubstitutos = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        CodigoDocenteSubstituto.setText("Codigo");
-
-        NomeDocenteSubstituto.setText("Nome");
         NomeDocenteSubstituto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NomeDocenteSubstitutoActionPerformed(evt);
@@ -65,7 +64,7 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
         jLabel1.setText("Nível");
 
-        NivelDocenteSubstituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D1", "D2", "D3" }));
+        NivelDocenteSubstituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S1", "S2" }));
 
         jLabel2.setText("Carga-Horária");
 
@@ -87,10 +86,7 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         TabelaDepartamentos.setAutoCreateRowSorter(true);
         TabelaDepartamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Tamanho Atual", "Tamanho Máximo"
@@ -123,7 +119,7 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
         jScrollPane3.setViewportView(jScrollPane2);
 
-        ExibirDepartamentos.setText("Exibir");
+        ExibirDepartamentos.setText("Exibir Departamentos");
         ExibirDepartamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExibirDepartamentosActionPerformed(evt);
@@ -161,18 +157,16 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
         jScrollPane4.setViewportView(jScrollPane1);
 
+        jLabel5.setText("Código");
+
+        jLabel6.setText("Nome");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(ExibirDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,8 +186,19 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
                                     .addGap(137, 137, 137)
                                     .addComponent(jLabel2))
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                                .addComponent(CodigoDocenteSubstituto)
-                                .addComponent(NomeDocenteSubstituto)))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(CodigoDocenteSubstituto)
+                                        .addComponent(NomeDocenteSubstituto))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ExibirDepartamentos)
+                            .addComponent(jLabel4))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -206,9 +211,13 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CodigoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addComponent(NomeDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NomeDocenteSubstituto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -258,7 +267,7 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
-        Substituto substituto = new Substituto(codigoDocenteSubstituto, nomeDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHoraria);
+        Substituto substituto = new Substituto(nomeDocenteSubstituto, codigoDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHoraria);
         Controlador controlador = new Controlador();
         controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, substituto);
 
@@ -271,14 +280,13 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-
-        tableModel.setRowCount(0);
-
+        
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
-            tableModel.addRow(rowData);
+            modelo.addRow(rowData);
         }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
@@ -338,6 +346,8 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
