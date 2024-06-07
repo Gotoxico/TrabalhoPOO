@@ -9,6 +9,8 @@ import Controlador.Controlador;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import Classes.Efetivo;
+import Classes.Funcionario;
+import Classes.Tecnico;
 
 /**
  *
@@ -128,17 +130,14 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
 
         TabelaDocentesEfetivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Nível", "Titulação", "Área"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -276,6 +275,7 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
         
@@ -287,7 +287,24 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
 
     private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
 
+        String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
+        
+        DefaultTableModel modelo2 = (DefaultTableModel)TabelaDocentesEfetivos.getModel();
+        modelo2.setRowCount(0);
+        Controlador controlador = new Controlador();
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
+
+        for(Funcionario funcionario : funcionarios) {
+            if(funcionario instanceof Efetivo){
+                Efetivo efetivo = (Efetivo) funcionario;
+                Object[] rowData = {efetivo.getCodigo(), efetivo.getNome(), efetivo.getNivel(), efetivo.getTitulacao(), efetivo.getArea()};
+                modelo2.addRow(rowData);
+            }
+        }
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
     /**

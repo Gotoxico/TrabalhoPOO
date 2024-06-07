@@ -5,6 +5,8 @@
 package Interface;
 
 import Classes.Departamento;
+import Classes.Efetivo;
+import Classes.Funcionario;
 import Classes.Substituto;
 import Controlador.Controlador;
 import java.util.ArrayList;
@@ -128,17 +130,14 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
         TabelaDocentesSubstitutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Nível", "Titulação", "Carga-Horária"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -263,11 +262,12 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         String nivelDocenteSubstituto = (String) NivelDocenteSubstituto.getSelectedItem();
         String titulacao = (String) TitulacaoDocenteSubstituto.getSelectedItem();
         String cargaHoraria = (String) CargaHorariaDocenteSubstituto.getSelectedItem();
+        Integer cargaHorariaInteiro = Integer.parseInt(cargaHoraria);
         
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
-        Substituto substituto = new Substituto(nomeDocenteSubstituto, codigoDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHoraria);
+        Substituto substituto = new Substituto(nomeDocenteSubstituto, codigoDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHorariaInteiro);
         Controlador controlador = new Controlador();
         controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, substituto);
 
@@ -276,11 +276,30 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
 
     private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+
+        String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
+        
+        DefaultTableModel modelo2 = (DefaultTableModel)TabelaDocentesSubstitutos.getModel();
+        modelo2.setRowCount(0);
+        Controlador controlador = new Controlador();
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
+
+        for(Funcionario funcionario : funcionarios) {
+            if(funcionario instanceof Substituto){
+                Substituto substituto = (Substituto) funcionario;
+                Object[] rowData = {substituto.getCodigo(), substituto.getNome(), substituto.getNivel(), substituto.getTitulacao(), substituto.getCargahoraria()};
+                modelo2.addRow(rowData);
+            }
+        }
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
         

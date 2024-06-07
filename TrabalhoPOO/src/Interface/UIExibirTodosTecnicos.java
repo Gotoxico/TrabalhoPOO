@@ -35,7 +35,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        ExibirFuncionarios = new javax.swing.JButton();
+        ExibirTecnico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaTecnico = new javax.swing.JTable();
 
@@ -43,10 +43,10 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
 
         jLabel3.setText("Todos os Técnicos");
 
-        ExibirFuncionarios.setText("Exibir Técnicos");
-        ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+        ExibirTecnico.setText("Exibir Técnicos");
+        ExibirTecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExibirFuncionariosActionPerformed(evt);
+                ExibirTecnicoActionPerformed(evt);
             }
         });
 
@@ -90,7 +90,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(141, 141, 141)
-                        .addComponent(ExibirFuncionarios)))
+                        .addComponent(ExibirTecnico)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -99,7 +99,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(ExibirFuncionarios)
+                .addComponent(ExibirTecnico)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -119,18 +119,18 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
+    private void ExibirTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirTecnicoActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaTecnico.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
 
         for (Funcionario funcionario : funcionarios) {
-            Tecnico tecnico = (Tecnico) funcionario;
-            Object[] rowData = {tecnico.getCodigo(), tecnico.getNome(), tecnico.getSalario(), tecnico.getNivel(), tecnico.getFuncao()};
-            modelo.addRow(rowData);
+           Tecnico tecnico = (Tecnico) funcionario;
+           Object[] rowData = {tecnico.getCodigo(), tecnico.getNome(), tecnico.getSalario(), tecnico.getNivel(), tecnico.getFuncao()};
+           modelo.addRow(rowData);  
         }
-    }//GEN-LAST:event_ExibirFuncionariosActionPerformed
+    }//GEN-LAST:event_ExibirTecnicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,7 +175,7 @@ public class UIExibirTodosTecnicos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExibirFuncionarios;
+    private javax.swing.JButton ExibirTecnico;
     private javax.swing.JTable TabelaTecnico;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;

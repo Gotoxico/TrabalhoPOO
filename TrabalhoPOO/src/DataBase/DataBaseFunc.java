@@ -68,7 +68,7 @@ public class DataBaseFunc {
         }
     }
     
-     public ArrayList<Funcionario> FucionariosPorFaixa(double min, double max){
+     public ArrayList<Funcionario> FuncionariosPorFaixa(double min, double max){
         ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
         
         if(min > max){
@@ -113,7 +113,7 @@ public class DataBaseFunc {
         
         Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i].getNome().equals(nome)){
+            if(funcionarios[i].getCodigo().equals(nome)){
                 funcionario = funcionarios[i];
                 break;
             }

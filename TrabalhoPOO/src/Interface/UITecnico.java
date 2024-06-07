@@ -4,6 +4,7 @@
  */
 package Interface;
 import Classes.Departamento;
+import Classes.Funcionario;
 import Controlador.Controlador;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,17 +122,14 @@ public class UITecnico extends javax.swing.JDialog {
 
         TabelaTecnicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Nível", "Função"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -268,15 +266,9 @@ public class UITecnico extends javax.swing.JDialog {
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-        
-       // tableModel.setRowCount(0);
-       
-        /*for (int i = 0; i < TabelaDepartamentos.getRowCount(); i++) {
-            modelo.removeRow(0);
-        }*/
-
         
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
@@ -286,6 +278,24 @@ public class UITecnico extends javax.swing.JDialog {
 
     private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+
+        String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
+        
+        DefaultTableModel modelo2 = (DefaultTableModel)TabelaTecnicos.getModel();
+        modelo2.setRowCount(0);
+        Controlador controlador = new Controlador();
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
+
+        for(Funcionario funcionario : funcionarios) {
+            if(funcionario instanceof Tecnico){
+                Tecnico tecnico = (Tecnico) funcionario;
+                Object[] rowData = {tecnico.getCodigo(), tecnico.getNome(), tecnico.getNivel(), tecnico.getFuncao()};
+                modelo2.addRow(rowData);
+            }
+        }
         
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 

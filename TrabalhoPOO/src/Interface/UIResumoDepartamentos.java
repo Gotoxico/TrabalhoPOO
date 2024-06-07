@@ -119,6 +119,7 @@ public class UIResumoDepartamentos extends javax.swing.JDialog {
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
 

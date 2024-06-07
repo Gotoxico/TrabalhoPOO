@@ -63,8 +63,8 @@ public class Departamento implements Cloneable {
     
   
     
-    public ArrayList<Funcionario> FucionariosPorFaixa(double min, double max){
-        return dbf.FucionariosPorFaixa(min, max);
+    public ArrayList<Funcionario> FuncionariosPorFaixa(double min, double max){
+        return dbf.FuncionariosPorFaixa(min, max);
     }
     
         

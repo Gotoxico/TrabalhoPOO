@@ -85,7 +85,7 @@ public class DataBase {
         ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
         
         for(int i = 0; i < contDep; i++){
-           arrayFuncionario.addAll(departamentos[i].FucionariosPorFaixa(min, max));
+           arrayFuncionario.addAll(departamentos[i].FuncionariosPorFaixa(min, max));
         }
         return arrayFuncionario;
     }
@@ -187,7 +187,6 @@ public class DataBase {
     
     public ArrayList<Departamento> resumoDepartamentoFaixa(double inferior, double superior){
         ArrayList<Departamento> arraydepartamento = new ArrayList<>();
-
         
         for(int i = 0; i < tamanho; i++){
             if(departamentos[i].GastoTotal()>= inferior && departamentos[i].GastoTotal()<= superior){

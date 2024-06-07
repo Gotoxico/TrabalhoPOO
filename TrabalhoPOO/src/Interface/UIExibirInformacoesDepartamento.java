@@ -193,6 +193,20 @@ public class UIExibirInformacoesDepartamento extends javax.swing.JDialog {
 
     private void TabelaDepartamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaDepartamentosMouseClicked
         // TODO add your handling code here:
+        int row = TabelaDepartamentos.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
+                
+        Controlador controlador = new Controlador();
+        ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
+        
+        for (Departamento departamento : departamentos) {
+            if(departamento.getNome() == nomeDepartamento){
+                CodigoDepartamento.setText(departamento.getCodigo());
+                TamanhoAtual.setText(Double.toString(departamento.getContFunc()));
+                TamanhoMaximo.setText(Double.toString(departamento.getTamanho()));
+            }
+        }
     }//GEN-LAST:event_TabelaDepartamentosMouseClicked
 
     private void CodigoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoDepartamentoActionPerformed

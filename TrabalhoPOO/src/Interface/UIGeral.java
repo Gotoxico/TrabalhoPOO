@@ -194,6 +194,7 @@ public class UIGeral extends javax.swing.JDialog {
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
         DefaultTableModel modelo2 = (DefaultTableModel)TabelaFuncionarios.getModel();
+        modelo2.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
 

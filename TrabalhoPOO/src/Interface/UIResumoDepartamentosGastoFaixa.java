@@ -148,6 +148,7 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
         double limiteSuperior = Double.parseDouble(LimiteSuperior.getText());
         
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+        modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
 

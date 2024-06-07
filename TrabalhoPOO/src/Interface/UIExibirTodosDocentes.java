@@ -35,7 +35,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        ExibirFuncionarios = new javax.swing.JButton();
+        ExibirDocente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaDocente = new javax.swing.JTable();
 
@@ -43,10 +43,10 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
 
         jLabel3.setText("Todos os Docentes");
 
-        ExibirFuncionarios.setText("Exibir Docentes");
-        ExibirFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+        ExibirDocente.setText("Exibir Docentes");
+        ExibirDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExibirFuncionariosActionPerformed(evt);
+                ExibirDocenteActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
-                        .addComponent(ExibirFuncionarios)))
+                        .addComponent(ExibirDocente)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(ExibirFuncionarios)
+                .addComponent(ExibirDocente)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,20 +118,18 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirFuncionariosActionPerformed
+    private void ExibirDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDocenteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel)TabelaDocente.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.exibirTodosTecnicos();
-
-        tableModel.setRowCount(0);
 
         for (Funcionario funcionario : funcionarios) {
             Docente docente = (Docente) funcionario;
             Object[] rowData = {docente.getCodigo(), docente.getNome(), docente.getSalario(), docente.getNivel(), docente.getTitulacao()};
             modelo.addRow(rowData);
         }
-    }//GEN-LAST:event_ExibirFuncionariosActionPerformed
+    }//GEN-LAST:event_ExibirDocenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +174,7 @@ public class UIExibirTodosDocentes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExibirFuncionarios;
+    private javax.swing.JButton ExibirDocente;
     private javax.swing.JTable TabelaDocente;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
