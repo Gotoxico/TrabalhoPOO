@@ -186,9 +186,9 @@ public class DataBase {
     }
     
     public ArrayList<Departamento> resumoDepartamentoFaixa(double inferior, double superior){
-        ArrayList<Departamento> arraydepartamento = new ArrayList<>();
+        ArrayList<Departamento> arraydepartamento = new ArrayList<Departamento>();
         
-        for(int i = 0; i < tamanho; i++){
+        for(int i = 0; i < contDep; i++){
             if(departamentos[i].GastoTotal()>= inferior && departamentos[i].GastoTotal()<= superior){
                 arraydepartamento.add(departamentos[i].clone());
             }

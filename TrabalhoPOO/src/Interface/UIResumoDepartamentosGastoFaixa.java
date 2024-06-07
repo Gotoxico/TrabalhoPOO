@@ -144,18 +144,25 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
 
     private void ExibirDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirDepartamentosActionPerformed
         // TODO add your handling code here:
+         try {
         double limiteInferior = Double.parseDouble(LimiteInferior.getText());
         double limiteSuperior = Double.parseDouble(LimiteSuperior.getText());
-        
-        DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
+
+        DefaultTableModel modelo = (DefaultTableModel) TabelaDepartamentos.getModel();
         modelo.setRowCount(0);
         Controlador controlador = new Controlador();
-        ArrayList <Departamento> departamentos = controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
+        
+        ArrayList<Departamento> departamentos = new ArrayList<>();
+        controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
 
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getNome(), departamento.getTamanho(), departamento.GastoTotal()};
             modelo.addRow(rowData);
         }
+    } catch (NumberFormatException e) {
+        // Trate a exceção aqui (por exemplo, exiba uma mensagem de erro ao usuário)
+        System.err.println("Erro: Entrada inválida nos campos de texto.");
+    }
     }//GEN-LAST:event_ExibirDepartamentosActionPerformed
 
     /**

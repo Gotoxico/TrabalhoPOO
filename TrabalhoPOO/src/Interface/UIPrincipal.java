@@ -7,11 +7,16 @@ import Controlador.Controlador;
 import javax.swing.JOptionPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import Classes.Departamento;
+import Classes.Funcionario;
+import Classes.Tecnico;
+import Classes.Efetivo;
 
 /**
  *
  * @author rodri
  */
+import Classes.Substituto;
 public class UIPrincipal extends javax.swing.JFrame {
 
     /**
@@ -26,7 +31,44 @@ public class UIPrincipal extends javax.swing.JFrame {
                 if (controlador == null || controlador.getUniversidade() == null) {
                    Controlador c = new Controlador("UNESP", 50);
                 }
-            }
+                 //Cadastro de Departamentos
+                Departamento dep = new Departamento("60","Mat", 31);
+                controlador.adicionarDepartamento(dep);
+                dep = new Departamento("61", "Quim", 32);
+                controlador.adicionarDepartamento(dep);
+                dep = new Departamento("62", "Fis", 25);
+                controlador.adicionarDepartamento(dep);
+                dep = new Departamento("63", "Comp", 20);
+                controlador.adicionarDepartamento(dep);
+                
+                //Cadastro de Funcionarios para teste
+            Funcionario Func = new Tecnico( "20" , "Fernando", "T1", "Acessor");
+            controlador.adicionarFuncionario("Fis","62", Func);
+            Func = new Tecnico( "21" , "Cleiton", "T2", "Laboratório");
+            controlador.adicionarFuncionario("Quim","61", Func);
+            Func = new Tecnico( "22" , "Marcos", "T1", "Secretário");
+            controlador.adicionarFuncionario("Mat","60", Func);
+            Func = new Tecnico( "20" , "Murilo", "T2", "Acessor");
+            controlador.adicionarFuncionario("Comp","63", Func);
+            
+            Func = new Efetivo ( "Geraldo", "30", "D1", "Graduação", "Exatas");
+           controlador.adicionarFuncionario("Fis","62", Func);
+           Func = new Efetivo ( "Vagner", "31", "D2", "Mestrado", "Biológicas");
+           controlador.adicionarFuncionario("Quim","61", Func);
+           Func = new Efetivo ( "Naor", "33", "D3", "Doutorado", "Humanas");
+           controlador.adicionarFuncionario("Mat","60", Func);
+           Func = new Efetivo ( "Ronaldo", "38", "D1", "Graduação", "Exatas");
+           controlador.adicionarFuncionario("Comp","63", Func);
+           
+           Func = new Substituto("Elizer", "71", "S1", "Graduação", 12);
+           controlador.adicionarFuncionario("Comp","63", Func);
+           Func = new Substituto("João", "72", "S2", "Mestrado", 24);
+           controlador.adicionarFuncionario("Mat","60", Func);
+           Func = new Substituto("Vitor", "73", "S1", "Doutorado", 12);
+           controlador.adicionarFuncionario("Quim","61", Func);
+
+           
+        }
         });
     }
 
@@ -386,6 +428,8 @@ public class UIPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UIPrincipal().setVisible(true);
+               
+                
             }
         });
     }
