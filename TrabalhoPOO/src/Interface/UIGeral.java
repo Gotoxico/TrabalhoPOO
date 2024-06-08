@@ -178,7 +178,7 @@ public class UIGeral extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-        
+        modelo.setRowCount(0);
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
             modelo.addRow(rowData);
@@ -196,8 +196,8 @@ public class UIGeral extends javax.swing.JDialog {
         DefaultTableModel modelo2 = (DefaultTableModel)TabelaFuncionarios.getModel();
         modelo2.setRowCount(0);
         Controlador controlador = new Controlador();
-        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
-
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento( codigoDepartamento, nomeDepartamento);
+        
         for(Funcionario funcionario : funcionarios) {
             Object[] rowData = {funcionario.getNome()};
             modelo2.addRow(rowData);

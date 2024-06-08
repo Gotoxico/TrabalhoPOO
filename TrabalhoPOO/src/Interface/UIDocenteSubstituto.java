@@ -267,9 +267,9 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
-        Substituto substituto = new Substituto(nomeDocenteSubstituto, codigoDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHorariaInteiro);
+        Substituto substituto = new Substituto( codigoDocenteSubstituto, nomeDocenteSubstituto, nivelDocenteSubstituto, titulacao, cargaHorariaInteiro);
         Controlador controlador = new Controlador();
-        controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, substituto);
+        controlador.adicionarFuncionario( codigoDepartamento,nomeDepartamento, substituto);
 
         this.dispose();
     }//GEN-LAST:event_SalvarDocenteSubstitutoActionPerformed
@@ -285,8 +285,8 @@ public class UIDocenteSubstituto extends javax.swing.JDialog {
         DefaultTableModel modelo2 = (DefaultTableModel)TabelaDocentesSubstitutos.getModel();
         modelo2.setRowCount(0);
         Controlador controlador = new Controlador();
-        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
-
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento( codigoDepartamento, nomeDepartamento);
+        
         for(Funcionario funcionario : funcionarios) {
             if(funcionario instanceof Substituto){
                 Substituto substituto = (Substituto) funcionario;

@@ -145,9 +145,11 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel)TabelaFuncionario.getModel();
         Controlador controlador = new Controlador();
         Funcionario funcionario = controlador.buscarFuncionarioCodigo(codigo);
-        
-        Object[] rowData = {funcionario.getCodigo(), funcionario.getSalario(), funcionario.getNivel()};
+        if(funcionario != null){
+            Object[] rowData = {funcionario.getCodigo(), funcionario.getSalario(), funcionario.getNivel()};
         modelo.addRow(rowData);
+        }
+        
     }//GEN-LAST:event_BuscarFuncionarioCodigoImprimirActionPerformed
 
     private void CodigoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoFuncionarioActionPerformed

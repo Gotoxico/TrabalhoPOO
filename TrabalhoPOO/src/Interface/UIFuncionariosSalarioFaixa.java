@@ -151,9 +151,7 @@ public class UIFuncionariosSalarioFaixa extends javax.swing.JDialog {
         Controlador controlador = new Controlador();
         ArrayList <Funcionario> funcionarios = controlador.funcionariosSalarioFaixa(limiteInferior, limiteSuperior);
         
-   for(int i = 0; i < modelo.getRowCount(); i++){
-       modelo.removeRow(0);
-   }
+        modelo.setRowCount(0);
 
         for (Funcionario funcionario : funcionarios) {
             Object[] rowData = {funcionario.getCodigo(), funcionario.getNome(), funcionario.getSalario(), funcionario.getNivel()};

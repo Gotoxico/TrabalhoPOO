@@ -14,4 +14,5 @@ public class Constantes {
     public static final String ASSESSOR = "Assessor", LABORATORIO = "Laboratório", SECRETARIO = "Secretário";
     public static final double SALARIOBASE = 5000;
     public static final int MAX = 50;
+    public static final String nT1 = "T1", nT2 = "T2", nD1 = "D1", nD2 = "D2", nD3 = "D3", nS1 = "S1", nS2 = "S2";
 }

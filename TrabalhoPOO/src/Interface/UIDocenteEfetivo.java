@@ -265,9 +265,9 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         String codigoDepartamento = TabelaDepartamentos.getValueAt(row, 0).toString();
         String nomeDepartamento = TabelaDepartamentos.getValueAt(row, 1).toString();
         
-        Efetivo efetivo = new Efetivo(nomeDocenteEfetivo, codigoDocenteEfetivo, nivelDocenteEfetivo, titulacao, area);
+        Efetivo efetivo = new Efetivo( codigoDocenteEfetivo, nomeDocenteEfetivo, nivelDocenteEfetivo, titulacao, area);
         Controlador controlador = new Controlador();
-        controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, efetivo);
+        controlador.adicionarFuncionario( codigoDepartamento, nomeDepartamento, efetivo);
         
         this.dispose();
     }//GEN-LAST:event_SalvarDocenteEfetivoActionPerformed
@@ -278,7 +278,7 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         modelo.setRowCount(0);
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-        
+        modelo.setRowCount(0);
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
             modelo.addRow(rowData);
@@ -296,9 +296,8 @@ public class UIDocenteEfetivo extends javax.swing.JDialog {
         DefaultTableModel modelo2 = (DefaultTableModel)TabelaDocentesEfetivos.getModel();
         modelo2.setRowCount(0);
         Controlador controlador = new Controlador();
-        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
-
-        for(Funcionario funcionario : funcionarios) {
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento( codigoDepartamento, nomeDepartamento);
+         for(Funcionario funcionario : funcionarios) {
             if(funcionario instanceof Efetivo){
                 Efetivo efetivo = (Efetivo) funcionario;
                 Object[] rowData = {efetivo.getCodigo(), efetivo.getNome(), efetivo.getNivel(), efetivo.getTitulacao(), efetivo.getArea()};

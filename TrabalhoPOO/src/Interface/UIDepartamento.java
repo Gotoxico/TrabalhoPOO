@@ -216,7 +216,7 @@ public class UIDepartamento extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel)TabelaDepartamentos.getModel();
         Controlador controlador = new Controlador();
         ArrayList <Departamento> departamentos = controlador.resumoDepartamentos();
-        
+        modelo.setRowCount(0);
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getCodigo(), departamento.getNome(), departamento.getContFunc(), departamento.getTamanho()};
             modelo.addRow(rowData);

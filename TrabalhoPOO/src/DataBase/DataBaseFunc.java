@@ -90,7 +90,7 @@ public class DataBaseFunc {
         ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
         
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i].getNivel().equals(Constantes.T1) || funcionarios[i].getNivel().equals(Constantes.T2)){
+            if(funcionarios[i].getNivel().equals(Constantes.nT1) || funcionarios[i].getNivel().equals(Constantes.nT2)){
                 arrayfuncionarios.add(funcionarios[i].clone());
             }
         }
@@ -101,7 +101,7 @@ public class DataBaseFunc {
         ArrayList<Funcionario> arrayfuncionarios= new ArrayList<Funcionario>();
         
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i] instanceof Docente){
+            if(funcionarios[i] instanceof Efetivo || funcionarios[i] instanceof Substituto){
                 arrayfuncionarios.add(funcionarios[i].clone());
             }
         }
@@ -113,7 +113,7 @@ public class DataBaseFunc {
         
         Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i].getCodigo().equals(nome)){
+            if(funcionarios[i].getNome().equals(nome)){
                 funcionario = funcionarios[i];
                 break;
             }

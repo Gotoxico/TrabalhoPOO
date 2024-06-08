@@ -258,7 +258,7 @@ public class UITecnico extends javax.swing.JDialog {
         
         Tecnico tecnico = new Tecnico(codigoTecnico, nomeTecnico, nivelTecnico, funcao);
         Controlador controlador = new Controlador();
-        controlador.adicionarFuncionario(nomeDepartamento, codigoDepartamento, tecnico);
+        controlador.adicionarFuncionario(codigoDepartamento, nomeDepartamento,  tecnico);
         
         this.dispose();
     }//GEN-LAST:event_SalvarTecnicoActionPerformed
@@ -287,7 +287,7 @@ public class UITecnico extends javax.swing.JDialog {
         DefaultTableModel modelo2 = (DefaultTableModel)TabelaTecnicos.getModel();
         modelo2.setRowCount(0);
         Controlador controlador = new Controlador();
-        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento(nomeDepartamento, codigoDepartamento);
+        ArrayList <Funcionario> funcionarios = controlador.exibirTodosFuncionariosDepartamento( codigoDepartamento, nomeDepartamento);
 
         for(Funcionario funcionario : funcionarios) {
             if(funcionario instanceof Tecnico){

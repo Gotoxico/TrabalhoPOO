@@ -44,7 +44,7 @@ public class DataBase {
         departamentos[contDep++] = dep;
     }
     
-    public void AddFuncionario(String nome, String codigo, Funcionario a){
+    public void AddFuncionario( String codigo, String nome, Funcionario a){
         for(int i = 0; i < contDep; i++){
             if(departamentos[i].getNome().equals(nome) && departamentos[i].getCodigo().equals(codigo)){
                 departamentos[i].AddFuncionario(a);
@@ -68,6 +68,9 @@ public class DataBase {
         Funcionario funcionario = null;
         for(int i = 0; i < contDep; i++){
             funcionario = departamentos[i].BuscarFuncPorNome(nome);
+            if(funcionario != null){
+                break;
+            }
         }
         
         return funcionario;
@@ -100,7 +103,7 @@ public class DataBase {
         return arrayFuncionario;
     }
     
-    public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento(String nome, String codigo){
+    public ArrayList<Funcionario> exibirTodosFuncionariosDepartamento( String codigo, String nome){
         ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
         DataBaseFunc dbf = new DataBaseFunc();
 

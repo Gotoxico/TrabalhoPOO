@@ -153,7 +153,7 @@ public class UIResumoDepartamentosGastoFaixa extends javax.swing.JDialog {
         Controlador controlador = new Controlador();
         
         ArrayList<Departamento> departamentos = new ArrayList<>();
-        controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
+        departamentos = controlador.resumoDepartamentoFaixa(limiteInferior, limiteSuperior);
 
         for (Departamento departamento : departamentos) {
             Object[] rowData = {departamento.getNome(), departamento.getTamanho(), departamento.GastoTotal()};
