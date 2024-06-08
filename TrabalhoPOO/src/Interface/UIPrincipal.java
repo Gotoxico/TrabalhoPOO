@@ -30,7 +30,7 @@ public class UIPrincipal extends javax.swing.JFrame {
             public void windowOpened(WindowEvent e) {
                 Controlador controlador = new Controlador();
                 if (controlador == null || controlador.getUniversidade() == null) {
-                   Controlador c = new Controlador("UNESP", 50);
+                    controlador = new Controlador("UNESP", 50);
                 }
                  //Cadastro de Departamentos
                 Departamento dep = new Departamento("60","Mat", 31);
@@ -399,6 +399,8 @@ public class UIPrincipal extends javax.swing.JFrame {
         UIBuscarFuncionarioNome UIImprimir = new UIBuscarFuncionarioNome(this, true);
         UIImprimir.setLocationRelativeTo(this);
         UIImprimir.setVisible(true);
+        
+        
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**

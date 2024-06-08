@@ -67,12 +67,11 @@ public class DataBase {
     public Funcionario buscarFuncionarioNome(String nome){
         Funcionario funcionario = null;
         for(int i = 0; i < contDep; i++){
-            funcionario = departamentos[i].BuscarFuncPorNome(nome);
-            if(funcionario != null){
-                break;
-            }
+             funcionario = departamentos[i].BuscarFuncPorNome(nome);
+             if(funcionario != null){
+                 break;
+             }
         }
-        
         return funcionario;
     }
 

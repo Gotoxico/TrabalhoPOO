@@ -114,21 +114,22 @@ public class DataBaseFunc {
         Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
             if(funcionarios[i].getNome().equals(nome)){
-                funcionario = funcionarios[i];
+                funcionario = funcionarios[i].clone();
                 break;
             }
         }
-        return funcionario.clone();
+        return funcionario;
     }
     
     public Funcionario BuscarFuncPorCod(String codigo){
         Funcionario funcionario = null;
         for(int i = 0; i < contFunc; i++){
-            if(funcionarios[i]. getNome().equals(codigo)){
-                funcionario = funcionarios[i];
+            if(funcionarios[i]. getCodigo().equals(codigo)){
+                funcionario = funcionarios[i].clone();
+                break;
             }
         }
-        return funcionario.clone();
+        return funcionario;
     }
     
     public ArrayList<Funcionario> ExibirSubstitutos(){

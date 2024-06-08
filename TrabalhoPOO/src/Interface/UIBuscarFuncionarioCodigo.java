@@ -20,6 +20,7 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
     public UIBuscarFuncionarioCodigo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LabelAviso.setVisible(false);
     }
 
     /**
@@ -38,6 +39,7 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaFuncionario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        LabelAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -123,17 +125,30 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jScrollPane1.getAccessibleContext().setAccessibleParent(TabelaFuncionario);
+
+        LabelAviso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LabelAviso.setForeground(new java.awt.Color(255, 0, 0));
+        LabelAviso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelAviso.setText("Funcionário não encontrado!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(LabelAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelAviso)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,9 +160,12 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel)TabelaFuncionario.getModel();
         Controlador controlador = new Controlador();
         Funcionario funcionario = controlador.buscarFuncionarioCodigo(codigo);
+        modelo.setRowCount(0);
         if(funcionario != null){
-            Object[] rowData = {funcionario.getCodigo(), funcionario.getSalario(), funcionario.getNivel()};
+            Object[] rowData = {funcionario.getNome(), funcionario.getSalario(), funcionario.getNivel()};
         modelo.addRow(rowData);
+        }else{
+            LabelAviso.setVisible(true);
         }
         
     }//GEN-LAST:event_BuscarFuncionarioCodigoImprimirActionPerformed
@@ -201,6 +219,7 @@ public class UIBuscarFuncionarioCodigo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuscarFuncionarioCodigoImprimir;
     private javax.swing.JTextField CodigoFuncionario;
+    private javax.swing.JLabel LabelAviso;
     private javax.swing.JTable TabelaFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
