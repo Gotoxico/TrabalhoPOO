@@ -43,35 +43,33 @@ public class UIPrincipal extends javax.swing.JFrame {
                 controlador.adicionarDepartamento(dep);
                 
                 //Cadastro de Funcionarios para teste
-                            Funcionario Func = new Tecnico("20", "Fernando", "T1", "Acessor");
-                  controlador.adicionarFuncionario("62", "Fis", Func);
-                  Func = new Tecnico("21", "Cleiton", "T2", "Laboratório");
-                  controlador.adicionarFuncionario("61", "Quim", Func);
-                  Func = new Tecnico("22", "Marcos", "T1", "Secretário");
-                  controlador.adicionarFuncionario("60", "Mat", Func);
-                  Func = new Tecnico("20", "Murilo", "T2", "Acessor");
-                  controlador.adicionarFuncionario("63", "Comp", Func);
+                //Tecnicos
+                Funcionario Func = new Tecnico("20", "Fernando", "T1", "Acessor");
+                controlador.adicionarFuncionario("62", "Fis", Func);
+                Func = new Tecnico("21", "Cleiton", "T2", "Laboratório");
+                controlador.adicionarFuncionario("61", "Quim", Func);
+                Func = new Tecnico("22", "Marcos", "T1", "Secretário");
+                controlador.adicionarFuncionario("60", "Mat", Func);
+                Func = new Tecnico("20", "Murilo", "T2", "Acessor");
+                controlador.adicionarFuncionario("63", "Comp", Func);
+                
+                //Docentes Efetivos
+                Func = new Efetivo("30", "Geraldo", "D1", "Graduação", "Exatas");
+                controlador.adicionarFuncionario("62", "Fis", Func);
+                Func = new Efetivo("31", "Vagner", "D2", "Mestrado", "Biológicas");
+                controlador.adicionarFuncionario("61", "Quim", Func);
+                Func = new Efetivo("33", "Naor", "D3", "Doutorado", "Humanas");
+                controlador.adicionarFuncionario("60", "Mat", Func);
+                Func = new Efetivo("38", "Ronaldo", "D1", "Graduação", "Exatas");
+                controlador.adicionarFuncionario("63", "Comp", Func);
 
-              
-
-                    Func = new Efetivo("30", "Geraldo", "D1", "Graduação", "Exatas");
-                    controlador.adicionarFuncionario("62", "Fis", Func);
-                    Func = new Efetivo("31", "Vagner", "D2", "Mestrado", "Biológicas");
-                    controlador.adicionarFuncionario("61", "Quim", Func);
-                    Func = new Efetivo("33", "Naor", "D3", "Doutorado", "Humanas");
-                    controlador.adicionarFuncionario("60", "Mat", Func);
-                    Func = new Efetivo("38", "Ronaldo", "D1", "Graduação", "Exatas");
-                    controlador.adicionarFuncionario("63", "Comp", Func);
-
-                    Func = new Substituto("71", "Elizer", "S1", "Graduação", 12);
-                    controlador.adicionarFuncionario("63", "Comp", Func);
-                    Func = new Substituto("72", "João", "S2", "Mestrado", 24);
-                    controlador.adicionarFuncionario("60", "Mat", Func);
-                    Func = new Substituto("73", "Vitor", "S1", "Doutorado", 12);
-                    controlador.adicionarFuncionario("61", "Quim", Func);
-
-
-           
+                //Substitutos
+                Func = new Substituto("71", "Elizer", "S1", "Graduação", 12);
+                controlador.adicionarFuncionario("63", "Comp", Func);
+                Func = new Substituto("72", "João", "S2", "Mestrado", 24);
+                controlador.adicionarFuncionario("60", "Mat", Func);
+                Func = new Substituto("73", "Vitor", "S1", "Doutorado", 12);
+                controlador.adicionarFuncionario("61", "Quim", Func);
         }
         });
     }
