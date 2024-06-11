@@ -112,9 +112,14 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("                         \t\t            Bem vindo!\nUtilize o menu localizado no canto superior direito para navegar entre as diversas operações de gerenciamento da universidade UNESP com 50 possíveis departamentos");
+        jTextArea1.setRows(3);
+        jTextArea1.setText("\t\t\tBem vindo!\nUtilize o menu localizado no canto superior direito para navegar entre as diversas operações de gerenciamento da universidade UNESP com 50 possíveis departamentos!");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setAutoscrolls(false);
+        jTextArea1.setFocusable(false);
+        jTextArea1.setOpaque(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         jMenu2.setText("Menu");
@@ -271,17 +276,16 @@ public class UIPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         pack();

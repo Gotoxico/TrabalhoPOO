@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar2">
       <SubComponents>
@@ -193,19 +193,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="502" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="633" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="17" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -222,9 +221,18 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI" size="14" style="0"/>
+            </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="                         &#x9;&#x9;            Bem vindo!&#xa;Utilize o menu localizado no canto superior direito para navegar entre as diversas opera&#xe7;&#xf5;es de gerenciamento da universidade UNESP com 50 poss&#xed;veis departamentos"/>
+            <Property name="rows" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="3" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x9;&#x9;&#x9;Bem vindo!&#xa;Utilize o menu localizado no canto superior direito para navegar entre as diversas opera&#xe7;&#xf5;es de gerenciamento da universidade UNESP com 50 poss&#xed;veis departamentos!"/>
+            <Property name="wrapStyleWord" type="boolean" value="true"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
