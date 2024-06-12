@@ -1,0 +1,3 @@
+Nomes: Kauan Loche dos Santos e Rodrigo Isao Goto
+Instruções de Uso:
+- Após baixar, siga este caminho: "src"->"Interface"->"UIPrincipal", compile este arquivo e rode, o que abrirá uma janela, depois é apenas seguir as instruções presentes no programa em execução.
